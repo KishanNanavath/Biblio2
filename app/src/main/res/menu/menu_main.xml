@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.kishan.biblio.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/search"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/cross"
+        android:title="serachView"
+        app:showAsAction="collapseActionView|ifRoom" />
+
+    <item
+        android:id="@+id/miSlideAnimation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Slide Animation" />
+
+    <item
+        android:id="@+id/miFlipAnimation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Flip Animation" />
+
+    <item
+        android:id="@+id/miNewAnimation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="new Animation" />
+
+</menu>

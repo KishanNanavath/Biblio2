@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="6"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:text="Option"
+        android:id="@+id/tvOptions" />
+    <TextView
+        android:id="@+id/tvNumRows"
+        android:gravity="center_vertical"
+        android:layout_weight="5"
+        android:text="count"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+</LinearLayout>
