@@ -26,6 +26,7 @@ public class BooksDatabase {
     public static final String KEY_IMAGELINKS = "_image_links";
     public static final String KEY_LANGUAGE = "_language";
     public static final String KEY_DESCRIPTION = "_description";
+    public static final String KEY_PAGE_NUM = "_page_num";
     public static final String KEY_IMAGE_BLOB = "_image";
 
     private static final String DATABASE_NAME = "BooksDB";
@@ -154,6 +155,14 @@ public class BooksDatabase {
         return sqLiteDatabase.update(TableName,contentValues,KEY_ROWID +" = "+rowId,null);
     }
 
+    public int setPaheNum(String TableName, int rowId, int page_num){
+        if(!TableName.equals(DATABASE_TABLE_READING))
+            return -1;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_PAGE_NUM,page_num);
+        return sqLiteDatabase.update(TableName,contentValues,KEY_ROWID +" = "+rowId,null);
+    }
+
     private static class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
@@ -206,6 +215,7 @@ public class BooksDatabase {
                             KEY_IMAGELINKS + " TEXT, " +
                             KEY_LANGUAGE + " TEXT, " +
                             KEY_DESCRIPTION + " TEXT, " +
+                            KEY_PAGE_NUM + " TEXT, " +
                             KEY_IMAGE_BLOB + " BLOB " + " );"
             );
 

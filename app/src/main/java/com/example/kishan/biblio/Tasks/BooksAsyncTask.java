@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.kishan.biblio.Adapters.BooksDetailsAdapter;
 import com.example.kishan.biblio.BuildConfig;
 import com.example.kishan.biblio.Getters.BooksGetter;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class BooksAsyncTask extends AsyncTask {
     ProgressDialog bar;
@@ -32,7 +35,7 @@ public class BooksAsyncTask extends AsyncTask {
     ArrayList<BooksGetter> mBookArray;
     RecyclerView mRecView;
     int nItems;
-    SwipeRefreshLayout srl;
+    SwipyRefreshLayout srl;
     int startPos;
 
     public BooksAsyncTask(Context c, ArrayList<BooksGetter> myBooksArray, BooksDetailsAdapter myAdapter, RecyclerView myRecView) {
@@ -56,7 +59,7 @@ public class BooksAsyncTask extends AsyncTask {
     protected Object doInBackground(Object[] params) {
         String Data = BuildConfig.FLAVOR;
         this.startPos = ((Integer) params[1]).intValue();
-        this.srl = (SwipeRefreshLayout) params[2];
+        this.srl = (SwipyRefreshLayout) params[2];
         try {
             HttpClient client = new DefaultHttpClient();
             HttpParams httpParams = client.getParams();
@@ -128,6 +131,17 @@ public class BooksAsyncTask extends AsyncTask {
             }
             this.mBookArray.add(new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null));
         }
+        Collections.sort(this.mBookArray, new Comparator<BooksGetter>() {
+            @Override
+            public int compare(BooksGetter o1, BooksGetter o2) {
+                if(o1.getCategories().split("~").length>0 && o2.getCategories().split("~").length>0){
+//                    return o1.getCategories().split("~")[0].compareTo(o2.getCategories().split("~")[0]);
+                    return o1.getTitle().compareTo(o2.getTitle());
+                }
+                else
+                    return 0;
+            }
+        });
     }
 
     protected void onPostExecute(Object o) {

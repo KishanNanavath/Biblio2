@@ -4,21 +4,18 @@ package com.example.kishan.biblio.Fragments;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -55,13 +52,13 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
     View svView;
     CardView mainDetails;
     CardView cdView;
+    LinearLayout imageLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_book_frame, container, false);
-
         svView = view.findViewById(R.id.svInnerView);
 
         mainDetails = (CardView)view.findViewById(R.id.cvMainDetails);
@@ -78,11 +75,25 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         bookImg = (ImageView) view.findViewById(R.id.ivBookImg);
         bookImg.setOnClickListener(this);
 
+        imageLayout = (LinearLayout)view.findViewById(R.id.llImageLayout);
+
         if (type.equals("online") && !thisBook.getImageLinks().split("~")[0].equals("")) {
             Picasso.with(bookImg.getContext())
                     .load(thisBook.getImageLinks().split("~")[0].trim())
                     .placeholder(R.mipmap.ic_launcher)
                     .into(bookImg);
+
+
+            Palette palette = Palette.from(((BitmapDrawable)bookImg.getDrawable()).getBitmap()).generate();
+            int defaulty = 0X000000;
+            int vibrant = palette.getVibrantColor(defaulty);
+            int vibrantLight = palette.getLightVibrantColor(defaulty);
+            int vibrantDark = palette.getDarkVibrantColor(defaulty);
+            int muted = palette.getMutedColor(defaulty);
+            int mutedLight = palette.getLightMutedColor(defaulty);
+            int mutedDark = palette.getDarkMutedColor(defaulty);
+
+            bookImg.setBackgroundColor(mutedLight);
         } else {
             Bitmap bmp = BitmapFactory.decodeByteArray(thisBook.getImageByteArray(), 0, thisBook.getImageByteArray().length);
             bookImg.setImageBitmap(bmp);
@@ -197,7 +208,12 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
             if (!database.isEntryByTitleExists(tableNames[i], thisBook.getTitle())) {
                 Long id = database.createEntry(thisBook, tableNames[i]);
                 int idi = Integer.parseInt(id + "");
-                new ImageLoadTask(getActivity()).execute(thisBook.getImageLinks().split("~")[0], idi, tableNames[i]);
+                if(thisBook.getImageLinks().split("~").length >= 0)
+                    new ImageLoadTask(getActivity()).execute(thisBook.getImageLinks().split("~")[0], idi, tableNames[i]);
+
+//                if(tableNames[i].equals("BookDetailsReading")){
+//                    database.setPaheNum(tableNames[i],idi,pageNum);
+//                }
             } else {
                 Toast.makeText(getActivity(), "Entry Already Exists", Toast.LENGTH_SHORT).show();
             }

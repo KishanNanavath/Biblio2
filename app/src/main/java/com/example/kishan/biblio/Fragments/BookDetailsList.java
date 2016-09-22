@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -25,19 +26,23 @@ import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 import com.example.kishan.biblio.Tasks.BooksAsyncTask;
 import com.example.kishan.biblio.Tasks.ReadDatabaseTask;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SwipyRefreshLayout.OnRefreshListener {
 
     RecyclerView BooksList;
     ArrayList<BooksGetter> booksArray;
     View view;
-    SwipeRefreshLayout srl;
+    SwipyRefreshLayout srl;
+//    SwipeRefreshLayout srl;
     BooksDetailsAdapter adapter;
+    FloatingActionButton fab;
 
     String url;
     String type;
@@ -52,7 +57,11 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
 
-            srl = (SwipeRefreshLayout)view.findViewById(R.id.srlGetMoreData);
+            fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
+            fab.setVisibility(View.VISIBLE);
+
+            srl = (SwipyRefreshLayout) view.findViewById(R.id.srlGetMoreData);
+
             srl.setOnRefreshListener(this);
 
             BooksList = (RecyclerView)view.findViewById(R.id.rvRecView);
@@ -114,6 +123,19 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 
     @Override
     public void onRefresh() {
+        if(type.equals("online")){
+            startIndex = booksArray.size();
+            Log.d("StartIndex :",startIndex+"");
+            new BooksAsyncTask(getActivity(),booksArray,adapter,BooksList).execute(url+"&startIndex="+startIndex,startIndex,srl);
+        }else{
+            srl.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void onRefresh(SwipyRefreshLayoutDirection direction) {
+        Log.d("MainActivity", "Refresh triggered at "
+                + (direction == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
         if(type.equals("online")){
             startIndex = booksArray.size();
             Log.d("StartIndex :",startIndex+"");

@@ -7,14 +7,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -93,21 +92,16 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         holder.bookImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookFrameFragment bff = new BookFrameFragment();
-
-                bff.setSharedElementEnterTransition(TransitionInflater.from(con));
-
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("BookDetails", thisBook);
                 bundle.putString("TYPE", type);
+
+                BookFrameFragment bff = new BookFrameFragment();
                 bff.setArguments(bundle);
 
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.addSharedElement(imageView,"tnBookImage");
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                //ft.setCustomAnimations(R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_shrink_fade_out_from_bottom, R.anim.abc_grow_fade_in_from_bottom, R.anim.abc_shrink_fade_out_from_bottom);
-//                ft.setCustomAnimations(R.anim.a_come_in,R.anim.b_come_out,R.anim.b_come_in,R.anim.a_come_out);
-                //ft.setCustomAnimations(fragInAni,fragOutANi,fragPopIn,fragPopOut);
+
                 ft.replace(R.id.fInnerContainers, bff);
                 ft.addToBackStack(null);
                 ft.commit();
@@ -126,24 +120,16 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         //Log.d("Position :",pos+" : "+holder.itemView.getY()+"");
         AnimatorSet animatorSet = new AnimatorSet();
 
-        /*
-        ObjectAnimator rotX;
-        if(pos%2==0){
-            rotX = ObjectAnimator.ofFloat(holder.itemView,"translationX",up==true?200:-200,0);
-            holder.itemView.setBackgroundColor(Color.parseColor("#aaaaaa"));
-        }
-        else
-            rotX = ObjectAnimator.ofFloat(holder.itemView,"translationX",up==true?-200:200,0);
-        rotX.setDuration(dur);
-        * */
+        ObjectAnimator transX = ObjectAnimator.ofFloat(holder.itemView,"translationX",up==true?-300:-300,0);
+        transX.setDuration(dur);
 
-        ObjectAnimator rotX = ObjectAnimator.ofFloat(holder.itemView,"translationX",up==true?-300:-300,0);
-        rotX.setDuration(dur);
+        ObjectAnimator transY = ObjectAnimator.ofFloat(holder.itemView,"translationY",up==true?-300:300,0);
+        transY.setDuration(dur);
 
-        ObjectAnimator rotY = ObjectAnimator.ofFloat(holder.itemView,"translationY",up==true?-300:300,0);
-        rotX.setDuration(dur);
-
-        animatorSet.playTogether(rotX,rotY);
+        animatorSet.playTogether(
+//                transX,
+                transY);
+        animatorSet.setInterpolator(new FastOutSlowInInterpolator());
         animatorSet.start();
     }
 
