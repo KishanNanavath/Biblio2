@@ -134,12 +134,14 @@ public class BooksAsyncTask extends AsyncTask {
         Collections.sort(this.mBookArray, new Comparator<BooksGetter>() {
             @Override
             public int compare(BooksGetter o1, BooksGetter o2) {
-                if(o1.getCategories().split("~").length>0 && o2.getCategories().split("~").length>0){
-//                    return o1.getCategories().split("~")[0].compareTo(o2.getCategories().split("~")[0]);
-                    return o1.getTitle().compareTo(o2.getTitle());
-                }
-                else
-                    return 0;
+//                if(o1.getCategories().split("~").length>0 && o2.getCategories().split("~").length>0){
+////                    return o1.getCategories().split("~")[0].compareTo(o2.getCategories().split("~")[0]);
+//                    return o1.getTitle().compareTo(o2.getTitle());
+//                }
+//                else
+//                    return 0;
+                return -o1.getRating().compareTo(o2.getRating());
+
             }
         });
     }

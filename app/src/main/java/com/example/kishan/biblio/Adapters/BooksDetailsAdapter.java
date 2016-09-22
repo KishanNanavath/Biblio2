@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -116,6 +117,20 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
 
     public void rowAni(MyBDHolder holder,boolean up,int pos){
         int dur = 500;
+
+        ObjectAnimator skew;
+        if(pos%2 == 0){
+            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",50,0);
+            skew.setDuration(dur*2);
+        }
+        else{
+            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",-50,0);
+            skew.setDuration(dur*2);
+        }
+
+        skew.setInterpolator(new AnticipateOvershootInterpolator());
+        skew.start();
+
 
         //Log.d("Position :",pos+" : "+holder.itemView.getY()+"");
         AnimatorSet animatorSet = new AnimatorSet();
