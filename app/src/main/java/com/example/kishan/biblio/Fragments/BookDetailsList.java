@@ -1,14 +1,17 @@
 package com.example.kishan.biblio.Fragments;
 
 
+import android.animation.Animator;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,11 +19,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kishan.biblio.Adapters.BooksDetailsAdapter;
+import com.example.kishan.biblio.Externals.ShrinkBehavior;
 import com.example.kishan.biblio.Getters.BooksGetter;
 import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
@@ -30,6 +36,8 @@ import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
 import java.util.ArrayList;
+
+import io.codetail.animation.SupportAnimator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,6 +55,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     String url;
     String type;
     int startIndex = 0;
+    ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,11 +66,33 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
 
+            imageView = (ImageView)view.findViewById(R.id.crvImg);
+
             fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int cx = imageView.getWidth()/2;
+                    int cy = imageView.getHeight()/2;
+
+                    float radius = (float)Math.hypot(cx,cy);
+
+                    SupportAnimator supportAnimator = io.codetail.animation.ViewAnimationUtils.createCircularReveal(imageView,cx,cy,0,radius);
+                    supportAnimator.setInterpolator(new FastOutSlowInInterpolator());
+                    supportAnimator.setDuration(1000);
+                    imageView.setVisibility(View.VISIBLE);
+                    supportAnimator.start();
+                }
+            });
+
+            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
+            p.setBehavior(new ShrinkBehavior());
+            fab.setLayoutParams(p);
+
+
 
             srl = (SwipyRefreshLayout) view.findViewById(R.id.srlGetMoreData);
-
             srl.setOnRefreshListener(this);
 
             BooksList = (RecyclerView)view.findViewById(R.id.rvRecView);
@@ -102,17 +133,20 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         switch (type){
             case "HaveRead":
                 //Toast.makeText(getActivity(),"have read",Toast.LENGTH_SHORT).show();
-                view.setBackgroundColor(Color.parseColor("#4FC3F7"));
+                view.setBackgroundColor(Color.parseColor("#dddddd"));
+//                view.setBackgroundColor(Color.parseColor("#4FC3F7"));
                 new ReadDatabaseTask(getActivity(),booksArray,adapter,BooksList).execute("BookDetailsHaveRead");
                 break;
             case "Reading":
                 //Toast.makeText(getActivity(),"reading",Toast.LENGTH_SHORT).show();
-                view.setBackgroundColor(Color.parseColor("#FFD54F"));
+                view.setBackgroundColor(Color.parseColor("#dddddd"));
+//                view.setBackgroundColor(Color.parseColor("#FFD54F"));
                 new ReadDatabaseTask(getActivity(),booksArray,adapter,BooksList).execute("BookDetailsReading");
                 break;
             case "WantToRead":
                 //Toast.makeText(getActivity(),"wanttoread",Toast.LENGTH_SHORT).show();
-                view.setBackgroundColor(Color.parseColor("#E57373"));
+                view.setBackgroundColor(Color.parseColor("#dddddd"));
+//                view.setBackgroundColor(Color.parseColor("#E57373"));
                 new ReadDatabaseTask(getActivity(),booksArray,adapter,BooksList).execute("BookDetailsWantToRead");
                 break;
             case "online":

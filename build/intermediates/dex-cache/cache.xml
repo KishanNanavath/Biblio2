@@ -33,14 +33,14 @@
         jar="D:\My Files\Biblio2\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="f86b037be89485216bdea328973360ffd7f8c2bd">
+        sha1="7f62b4192f4c28fd40a57e43513577c320d458a6">
         <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_19667d04723db2a5b55963f7717e40d70a0f2a72.jar" />
     </item>
     <item
         jar="D:\My Files\Biblio2\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="82cf39878a82a672f3dcf1b945a4144ea499b5c5">
+        sha1="3f7101c45acb0232154380132708f5f64568918d">
         <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\instant-run_205b5a6e836aeabba36581e10782aa967dbe05ad.jar" />
     </item>
     <item
@@ -49,13 +49,6 @@
         revision="24.0.2"
         sha1="a978650837318cf056bf3383ff02fe7a3b891f20">
         <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-palette-v7-23.1.1_ad8ea638a4ef863998d82970a5b784a33e4a506b.jar" />
-    </item>
-    <item
-        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
-        jumboMode="true"
-        revision="24.0.2"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-design-22.2.0_c593fc06771ec8e2aef5a2d2764833aac1d8145e.jar" />
     </item>
     <item
         jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\jars\classes.jar"
@@ -140,6 +133,13 @@
         revision="24.0.2"
         sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
         <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.0_7f1d9344107315d9fd3f2ed955d83f8287e097dc.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-design-22.2.1_ea15af893fba4ef28327d0f983f6549f7ce32cfd.jar" />
     </item>
     <item
         jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\libs\internal_impl-24.2.0.jar"

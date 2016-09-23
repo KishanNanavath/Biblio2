@@ -1,8 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#fff">
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/srlGetMoreData"
@@ -16,34 +17,46 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-
     </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:visibility="gone"
         android:id="@+id/fbFab"
-        android:layout_margin="15px"
-        android:backgroundTint="#1d1d1d"
-        android:filterTouchesWhenObscured="true"
-        android:src="@android:drawable/ic_input_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_gravity="bottom|right"
+        android:layout_margin="15px"
+        android:filterTouchesWhenObscured="true"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_anchor="@id/srlGetMoreData"
+        app:layout_anchorGravity="bottom|end|right"
+        app:rippleColor="@color/shadow_end_color"/>
 
-<!--
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srlGetMoreData"
-        android:layout_width="fill_parent"
+    <io.codetail.widget.RevealFrameLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvRecView"
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/crvImg"
+            android:src="@drawable/sym"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content" />
+    </io.codetail.widget.RevealFrameLayout>
 
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
--->
-</RelativeLayout>
+
+        <!--
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/srlGetMoreData"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvRecView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        -->
+
+</android.support.design.widget.CoordinatorLayout>

@@ -187,8 +187,10 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
                         tables += "BookDetailsWantToRead";
                     }
                     popup.dismiss();
-                    String[] tableNames = tables.trim().split(",");
-                    saveToDatabase(tableNames);
+                    if(reading.isChecked() || haveRead.isChecked() || wantToRead.isChecked()){
+                        String[] tableNames = tables.trim().split(",");
+                        saveToDatabase(tableNames);
+                    }
                 }
             });
 

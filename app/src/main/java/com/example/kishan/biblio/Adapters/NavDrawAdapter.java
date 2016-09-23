@@ -154,7 +154,9 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
                 boolean isFragmentInBackStack = fm.popBackStackImmediate(type, 0);
                 if (!isFragmentInBackStack) {
                     FragmentTransaction ft = fm.beginTransaction();
-                    ft.setCustomAnimations(R.anim.a_come_in, R.anim.b_come_out, R.anim.b_come_in, R.anim.a_come_out);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+//                    ft.setCustomAnimations(R.anim.a_come_in, R.anim.b_come_out, R.anim.b_come_in, R.anim.a_come_out);
                     //ft.setCustomAnimations(fragInAni,fragOutANi,fragPopIn,fragPopOut);
                     ft.replace(R.id.fInnerContainers, bdl, type);
                     ft.addToBackStack(type);
