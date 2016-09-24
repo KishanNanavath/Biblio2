@@ -47,6 +47,7 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
             if (Build.VERSION.SDK_INT <= 11)
                 ((ViewGroup) view.getParent()).removeView(view);
         } else {
+            getDialog().setTitle("Advanced Search");
             view = inflater.inflate(R.layout.fragment_advanced_search, container, false);
 
             title = (EditText) view.findViewById(R.id.etSearchTitle);
@@ -121,6 +122,7 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         ft.replace(R.id.fInnerContainers, bdl);
         ft.addToBackStack(bdl.getClass().getName());
         ft.commit();
+        getDialog().dismiss();
     }
 
     @Override

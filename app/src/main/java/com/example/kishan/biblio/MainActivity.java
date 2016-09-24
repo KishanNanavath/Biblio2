@@ -125,6 +125,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (id == R.id.search) {
             AdvancedSearchFragment myDialog = new AdvancedSearchFragment();
+
             myDialog.show(getSupportFragmentManager().beginTransaction(),"My Dialog");
         }
 

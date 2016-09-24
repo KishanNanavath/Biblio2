@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Toast;
 
 import com.example.kishan.biblio.Adapters.BooksDetailsAdapter;
 import com.example.kishan.biblio.Getters.BooksGetter;
@@ -23,8 +26,12 @@ import com.example.kishan.biblio.Tasks.BooksAsyncTask;
 import com.example.kishan.biblio.Tasks.ReadDatabaseTask;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
+import com.software.shell.fab.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import io.codetail.animation.SupportAnimator;
+import io.codetail.animation.ViewAnimationUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +48,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     String url;
     String type;
     int startIndex = 0;
+    FloatingActionButton fab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +111,66 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 //            fab.setLayoutParams(p);
 
 
+            fab = (FloatingActionButton) view.findViewById(R.id.fbFab);
+            fab.setVisibility(View.VISIBLE);
+
+            final View myView = view.findViewById(R.id.awesome_card);
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // get the center for the clipping circle
+                    int cx = (myView.getLeft() + myView.getRight());
+                    int cy = (myView.getBottom());
+
+                    // get the final radius for the clipping circle
+                    int dx = Math.max(cx, myView.getWidth() - cx);
+                    int dy = Math.max(cy, myView.getHeight() - cy);
+                    float finalRadius = (float) Math.hypot(dx, dy);
+
+                    Toast.makeText(getContext(),(myView.getVisibility() == View.GONE)+"",Toast.LENGTH_SHORT).show();
+
+                    int dur = 800;
+                    if(myView.getVisibility() == View.GONE){
+                        myView.setVisibility(View.VISIBLE);
+                        // Android native animator
+                        SupportAnimator animator =
+                                ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
+                        animator.setInterpolator(new FastOutSlowInInterpolator());
+                        animator.setDuration(dur);
+                        animator.start();
+                    }
+                    else{
+                        // Android native animator
+                        SupportAnimator animator =
+                                ViewAnimationUtils.createCircularReveal(myView, cx, cy, finalRadius,0);
+                        animator.setInterpolator(new FastOutSlowInInterpolator());
+                        animator.setDuration(dur);
+                        animator.addListener(new SupportAnimator.AnimatorListener() {
+                            @Override
+                            public void onAnimationStart() {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd() {
+                                myView.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationCancel() {
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat() {
+
+                            }
+                        });
+                        animator.start();
+                    }
+                }
+            });
 
             srl = (SwipyRefreshLayout) view.findViewById(R.id.srlGetMoreData);
             srl.setOnRefreshListener(this);
