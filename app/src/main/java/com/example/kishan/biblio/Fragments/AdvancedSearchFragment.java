@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,7 +28,7 @@ import com.example.kishan.biblio.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdvancedSearchFragment extends Fragment implements View.OnClickListener, TextView.OnEditorActionListener {
+public class AdvancedSearchFragment extends DialogFragment implements View.OnClickListener, TextView.OnEditorActionListener {
     EditText title;
     EditText authors;
     EditText keywords;
@@ -102,7 +103,7 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
             Toast.makeText(getActivity(), "Please fill any field", Toast.LENGTH_LONG).show();
             return;
         }
-        searchTerms += "&maxResults=40";
+        searchTerms += "&maxResults=40&printType=books&filter=full";
         Log.d("Query :",searchTerms);
         //Toast.makeText(getActivity(),searchTerms,Toast.LENGTH_LONG).show();
 

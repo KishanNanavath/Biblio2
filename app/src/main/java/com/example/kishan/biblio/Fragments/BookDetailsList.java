@@ -66,29 +66,13 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
 
-            imageView = (ImageView)view.findViewById(R.id.crvImg);
-
             fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int cx = imageView.getWidth()/2;
-                    int cy = imageView.getHeight()/2;
 
-                    float radius = (float)Math.hypot(cx,cy);
 
-                    SupportAnimator supportAnimator = io.codetail.animation.ViewAnimationUtils.createCircularReveal(imageView,cx,cy,0,radius);
-                    supportAnimator.setInterpolator(new FastOutSlowInInterpolator());
-                    supportAnimator.setDuration(1000);
-                    imageView.setVisibility(View.VISIBLE);
-                    supportAnimator.start();
-                }
-            });
-
-            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
-            p.setBehavior(new ShrinkBehavior());
-            fab.setLayoutParams(p);
+//            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
+//            p.setBehavior(new ShrinkBehavior());
+//            fab.setLayoutParams(p);
 
 
 
