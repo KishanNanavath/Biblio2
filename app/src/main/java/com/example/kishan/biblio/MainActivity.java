@@ -29,17 +29,26 @@ public class MainActivity extends ActionBarActivity {
     public int fragOutANi = 0;
     public int fragPopIn = 0;
     public int fragPopOut = 0;
+    final String url = "https://www.googleapis.com/books/v1/volumes?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();
         setToolBar();
         setNavDrawer();
 
-        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+//        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+        BookDetailsList asf = new BookDetailsList();
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", url+"q=King&printType=books");
+        bundle.putString("TYPE", "online");
+        asf.setArguments(bundle);
+
         FragmentManager fm = getSupportFragmentManager();
 
         FragmentTransaction ft = fm.beginTransaction();
@@ -114,6 +123,12 @@ public class MainActivity extends ActionBarActivity {
             fragPopOut = R.anim.a_come_out;
         }
 
+        if (id == R.id.search) {
+            AdvancedSearchFragment myDialog = new AdvancedSearchFragment();
+            myDialog.show(getSupportFragmentManager().beginTransaction(),"My Dialog");
+        }
+
         return super.onOptionsItemSelected(item);
     }
+
 }

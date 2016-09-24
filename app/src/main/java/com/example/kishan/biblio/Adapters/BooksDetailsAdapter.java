@@ -119,13 +119,22 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         int dur = 500;
 
         ObjectAnimator skew;
+        ObjectAnimator transX;
         if(pos%2 == 0){
-            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",50,0);
+            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",45,0);
             skew.setDuration(dur*2);
+
+            transX = ObjectAnimator.ofFloat(holder.itemView,"translationX",-90,0);
+            transX.setDuration(dur);
+
         }
         else{
-            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",-50,0);
+            skew = ObjectAnimator.ofFloat(holder.itemView,"rotationY",-45,0);
             skew.setDuration(dur*2);
+
+            transX = ObjectAnimator.ofFloat(holder.itemView,"translationX",90,0);
+            transX.setDuration(dur);
+
         }
 
         skew.setInterpolator(new AnticipateOvershootInterpolator());
@@ -135,14 +144,12 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         //Log.d("Position :",pos+" : "+holder.itemView.getY()+"");
         AnimatorSet animatorSet = new AnimatorSet();
 
-        ObjectAnimator transX = ObjectAnimator.ofFloat(holder.itemView,"translationX",up==true?-300:-300,0);
-        transX.setDuration(dur);
 
         ObjectAnimator transY = ObjectAnimator.ofFloat(holder.itemView,"translationY",up==true?-300:300,0);
         transY.setDuration(dur);
 
         animatorSet.playTogether(
-//                transX,
+                transX,
                 transY);
         animatorSet.setInterpolator(new FastOutSlowInInterpolator());
         animatorSet.start();

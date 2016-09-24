@@ -32,6 +32,7 @@
         app:layout_anchor="@id/srlGetMoreData"
         app:layout_anchorGravity="bottom|end|right"
         app:rippleColor="@color/shadow_end_color"/>
+<<<<<<< HEAD
 -->
         <!--
             <android.support.v4.widget.SwipeRefreshLayout

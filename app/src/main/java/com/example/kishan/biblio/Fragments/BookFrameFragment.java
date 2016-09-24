@@ -2,6 +2,7 @@ package com.example.kishan.biblio.Fragments;
 
 
 import android.app.Dialog;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -37,26 +38,27 @@ import com.squareup.picasso.Picasso;
  */
 public class BookFrameFragment extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
-    View view;
-    BooksGetter thisBook;
-    ImageView bookImg;
-    TextView title;
-    TextView authors;
-    TextView category;
-    RatingBar rating;
-    TextView description;
-    TextView tvrating;
-    LinearLayout imgBg;
-    Button addBook;
-    String type;
-    View svView;
-    CardView mainDetails;
-    CardView cdView;
-    LinearLayout imageLayout;
+    private View view;
+    private BooksGetter thisBook;
+    private ImageView bookImg;
+    private TextView title;
+    private TextView authors;
+    private TextView category;
+    private RatingBar rating;
+    private TextView description;
+    private TextView tvrating;
+    private LinearLayout imgBg;
+    private Button addBook;
+    private String type;
+    private View svView;
+    private CardView mainDetails;
+    private CardView cdView;
+    private LinearLayout imageLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_book_frame, container, false);
         svView = view.findViewById(R.id.svInnerView);
@@ -77,12 +79,27 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
 
         imageLayout = (LinearLayout)view.findViewById(R.id.llImageLayout);
 
-        if (type.equals("online") && !thisBook.getImageLinks().split("~")[0].equals("")) {
+        if (type.equals("online")) {
+//            && !thisBook.getImageLinks().split("~")[0].equals("")
+            if(thisBook.getImageLinks().split("~").length>0 && !thisBook.getImageLinks().split("~")[0].equals("")){
+                Picasso.with(bookImg.getContext())
+                        .load(thisBook.getImageLinks().split("~")[0].trim())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(bookImg);
+            }
+            else if(thisBook.getImageLinks().split("~").length>1 && !thisBook.getImageLinks().split("~")[1].equals("")){
+                Picasso.with(bookImg.getContext())
+                        .load(thisBook.getImageLinks().split("~")[1].trim())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(bookImg);
+            }
+
+            /*
             Picasso.with(bookImg.getContext())
                     .load(thisBook.getImageLinks().split("~")[0].trim())
                     .placeholder(R.mipmap.ic_launcher)
                     .into(bookImg);
-
+            */
 
             Palette palette = Palette.from(((BitmapDrawable)bookImg.getDrawable()).getBitmap()).generate();
             int defaulty = 0X000000;

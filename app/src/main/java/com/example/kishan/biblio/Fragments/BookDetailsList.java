@@ -87,14 +87,21 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 */
 
 /*
+>>>>>>> 9b016e0ea1509c9c10bc1d160aecff7c396857d3
             fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);
 
 
+<<<<<<< HEAD
             CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
             p.setBehavior(new ShrinkBehavior());
             fab.setLayoutParams(p);
 */
+
+//            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
+//            p.setBehavior(new ShrinkBehavior());
+//            fab.setLayoutParams(p);
+
 
 
             srl = (SwipyRefreshLayout) view.findViewById(R.id.srlGetMoreData);
