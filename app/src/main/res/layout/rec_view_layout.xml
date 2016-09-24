@@ -19,7 +19,9 @@
         </android.support.v7.widget.RecyclerView>
     </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
+    <!---
     <android.support.design.widget.FloatingActionButton
+        android:visibility="gone"
         android:id="@+id/fbFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,20 +32,7 @@
         app:layout_anchor="@id/srlGetMoreData"
         app:layout_anchorGravity="bottom|end|right"
         app:rippleColor="@color/shadow_end_color"/>
-
-    <io.codetail.widget.RevealFrameLayout
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/crvImg"
-            android:src="@drawable/sym"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </io.codetail.widget.RevealFrameLayout>
-
-
+-->
         <!--
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/srlGetMoreData"

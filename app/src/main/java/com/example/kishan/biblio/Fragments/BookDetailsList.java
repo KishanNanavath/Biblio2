@@ -1,17 +1,11 @@
 package com.example.kishan.biblio.Fragments;
 
 
-import android.animation.Animator;
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,16 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.kishan.biblio.Adapters.BooksDetailsAdapter;
-import com.example.kishan.biblio.Externals.ShrinkBehavior;
 import com.example.kishan.biblio.Getters.BooksGetter;
-import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 import com.example.kishan.biblio.Tasks.BooksAsyncTask;
 import com.example.kishan.biblio.Tasks.ReadDatabaseTask;
@@ -36,8 +25,6 @@ import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
 import java.util.ArrayList;
-
-import io.codetail.animation.SupportAnimator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,12 +37,10 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     SwipyRefreshLayout srl;
 //    SwipeRefreshLayout srl;
     BooksDetailsAdapter adapter;
-    FloatingActionButton fab;
 
     String url;
     String type;
     int startIndex = 0;
-    ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,30 +51,50 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
 
-            imageView = (ImageView)view.findViewById(R.id.crvImg);
+            /*
+            ImageView imageView = new ImageView(getContext());
+            imageView.setImageResource(R.drawable.cross);
 
+            FloatingActionButton actionButton = new FloatingActionButton.Builder(getActivity())
+                    .setContentView(imageView)
+                    .build();
+
+            SubActionButton.Builder builder = new SubActionButton.Builder(getActivity());
+
+            ImageView imageView1 = new ImageView(getActivity());
+            imageView1.setImageResource(R.drawable.cross);
+            SubActionButton button1 = builder.setContentView(imageView1).build();
+
+            ImageView imageView2 = new ImageView(getActivity());
+            imageView2.setImageResource(R.drawable.cross);
+            SubActionButton button2 = builder.setContentView(imageView2).build();
+
+            ImageView imageView3 = new ImageView(getActivity());
+            imageView3.setImageResource(R.drawable.cross);
+            SubActionButton button3 = builder.setContentView(imageView3).build();
+
+            ImageView imageView4 = new ImageView(getActivity());
+            imageView4.setImageResource(R.drawable.cross);
+            SubActionButton button4 = builder.setContentView(imageView4).build();
+
+            FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
+                    .addSubActionView(button1)
+                    .addSubActionView(button2)
+                    .addSubActionView(button3)
+                    .addSubActionView(button4)
+                    .attachTo(actionButton)
+                    .build();
+*/
+
+/*
             fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int cx = imageView.getWidth()/2;
-                    int cy = imageView.getHeight()/2;
 
-                    float radius = (float)Math.hypot(cx,cy);
-
-                    SupportAnimator supportAnimator = io.codetail.animation.ViewAnimationUtils.createCircularReveal(imageView,cx,cy,0,radius);
-                    supportAnimator.setInterpolator(new FastOutSlowInInterpolator());
-                    supportAnimator.setDuration(1000);
-                    imageView.setVisibility(View.VISIBLE);
-                    supportAnimator.start();
-                }
-            });
 
             CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
             p.setBehavior(new ShrinkBehavior());
             fab.setLayoutParams(p);
-
+*/
 
 
             srl = (SwipyRefreshLayout) view.findViewById(R.id.srlGetMoreData);
