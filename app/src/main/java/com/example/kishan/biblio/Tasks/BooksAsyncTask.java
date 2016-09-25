@@ -3,8 +3,9 @@ package com.example.kishan.biblio.Tasks;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.kishan.biblio.Adapters.BooksDetailsAdapter;
 import com.example.kishan.biblio.BuildConfig;
@@ -150,8 +151,8 @@ public class BooksAsyncTask extends AsyncTask {
         this.bar.dismiss();
         this.mBookAdapet.notifyItemRangeInserted(this.startPos, this.startPos + this.nItems);
         this.mRecView.invalidate();
-        if (this.srl.isRefreshing()) {
-            this.srl.setRefreshing(false);
-        }
+//        if (this.srl.isRefreshing()) {
+//            this.srl.setRefreshing(false);
+//        }
     }
 }

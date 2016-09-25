@@ -1,23 +1,17 @@
 package com.example.kishan.biblio.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kishan.biblio.Database.BooksDatabase;
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
@@ -25,10 +19,7 @@ import com.example.kishan.biblio.Fragments.BookDetailsList;
 import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Kishan on 2/17/2016.
