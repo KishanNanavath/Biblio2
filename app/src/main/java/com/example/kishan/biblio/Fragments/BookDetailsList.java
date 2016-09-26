@@ -59,58 +59,6 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
 
-            /*
-            ImageView imageView = new ImageView(getContext());
-            imageView.setImageResource(R.drawable.cross);
-
-            FloatingActionButton actionButton = new FloatingActionButton.Builder(getActivity())
-                    .setContentView(imageView)
-                    .build();
-
-            SubActionButton.Builder builder = new SubActionButton.Builder(getActivity());
-
-            ImageView imageView1 = new ImageView(getActivity());
-            imageView1.setImageResource(R.drawable.cross);
-            SubActionButton button1 = builder.setContentView(imageView1).build();
-
-            ImageView imageView2 = new ImageView(getActivity());
-            imageView2.setImageResource(R.drawable.cross);
-            SubActionButton button2 = builder.setContentView(imageView2).build();
-
-            ImageView imageView3 = new ImageView(getActivity());
-            imageView3.setImageResource(R.drawable.cross);
-            SubActionButton button3 = builder.setContentView(imageView3).build();
-
-            ImageView imageView4 = new ImageView(getActivity());
-            imageView4.setImageResource(R.drawable.cross);
-            SubActionButton button4 = builder.setContentView(imageView4).build();
-
-            FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
-                    .addSubActionView(button1)
-                    .addSubActionView(button2)
-                    .addSubActionView(button3)
-                    .addSubActionView(button4)
-                    .attachTo(actionButton)
-                    .build();
-*/
-
-/*
->>>>>>> 9b016e0ea1509c9c10bc1d160aecff7c396857d3
-            fab = (FloatingActionButton)view.findViewById(R.id.fbFab);
-            fab.setVisibility(View.VISIBLE);
-
-
-<<<<<<< HEAD
-            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
-            p.setBehavior(new ShrinkBehavior());
-            fab.setLayoutParams(p);
-*/
-
-//            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams)fab.getLayoutParams();
-//            p.setBehavior(new ShrinkBehavior());
-//            fab.setLayoutParams(p);
-
-
             fab = (FloatingActionButton) view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);
 
@@ -132,11 +80,31 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 
                     int dur = 800;
                     if(myView.getVisibility() == View.GONE){
-                        myView.setVisibility(View.VISIBLE);
                         // Android native animator
                         SupportAnimator animator =
                                 ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
                         animator.setInterpolator(new FastOutSlowInInterpolator());
+                        animator.addListener(new SupportAnimator.AnimatorListener() {
+                            @Override
+                            public void onAnimationStart() {
+                                myView.setVisibility(View.VISIBLE);
+                            }
+
+                            @Override
+                            public void onAnimationEnd() {
+
+                            }
+
+                            @Override
+                            public void onAnimationCancel() {
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat() {
+
+                            }
+                        });
                         animator.setDuration(dur);
                         animator.start();
                     }

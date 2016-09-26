@@ -132,27 +132,14 @@ public class BooksAsyncTask extends AsyncTask {
             }
             this.mBookArray.add(new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null));
         }
-        Collections.sort(this.mBookArray, new Comparator<BooksGetter>() {
-            @Override
-            public int compare(BooksGetter o1, BooksGetter o2) {
-//                if(o1.getCategories().split("~").length>0 && o2.getCategories().split("~").length>0){
-////                    return o1.getCategories().split("~")[0].compareTo(o2.getCategories().split("~")[0]);
-//                    return o1.getTitle().compareTo(o2.getTitle());
-//                }
-//                else
-//                    return 0;
-                return -o1.getRating().compareTo(o2.getRating());
-
-            }
-        });
     }
 
     protected void onPostExecute(Object o) {
+        if (this.srl.isRefreshing()) {
+            this.srl.setRefreshing(false);
+        }
         this.bar.dismiss();
         this.mBookAdapet.notifyItemRangeInserted(this.startPos, this.startPos + this.nItems);
         this.mRecView.invalidate();
-//        if (this.srl.isRefreshing()) {
-//            this.srl.setRefreshing(false);
-//        }
     }
 }

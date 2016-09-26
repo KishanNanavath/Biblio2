@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -25,6 +26,10 @@ import android.widget.Toast;
 
 import com.example.kishan.biblio.R;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -37,7 +42,7 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
 
     View view;
 
-    final String url = "https://www.googleapis.com/books/v1/volumes?";
+    final String url = "https://www.googleapis.com/books/v1/volumes?q=";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,32 +86,34 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         */
     }
 
-    public void setFragment(){
-        String searchTerms = "q=";
+    public void setFragment() throws UnsupportedEncodingException {
+        ArrayList<String> searchArray = new ArrayList<>();
+
         if (!keywords.getText().toString().equals("")) {
-            searchTerms += keywords.getText().toString().replaceAll(" ", "+").replaceAll("\n", "+");
+            searchArray.add(keywords.getText().toString()+ "\"");
             keywords.setText("");
         }
         if (!title.getText().toString().equals("")) {
-            searchTerms += "+intitle:" + title.getText().toString().replaceAll(" ", "+").replaceAll("\n", "+");
+            searchArray.add("intitle:" + "\""+ title.getText().toString()+ "\"");
             title.setText("");
         }
         if (!authors.getText().toString().equals("")) {
-            searchTerms += "+inauthor:" + authors.getText().toString().replaceAll(" ", "+").replaceAll("\n", "+");
+            searchArray.add("inauthor:" + "\""+ authors.getText().toString()+ "\"");
             authors.setText("");
         }
         if (!isbn.getText().toString().equals("")) {
-            searchTerms += "+isbn:" + isbn.getText().toString().replaceAll(" ", "+").replaceAll("\n", "+");
+            searchArray.add("isbn:" + "\""+ isbn.getText().toString()+ "\"");
             isbn.setText("");
         }
 
-        if (searchTerms.toString().equals("q=")) {
+        if (searchArray.size() == 0) {
             Toast.makeText(getActivity(), "Please fill any field", Toast.LENGTH_LONG).show();
             return;
         }
-        searchTerms += "&maxResults=40&printType=books&filter=full";
+
+        String searchTerms = "";
+        searchTerms = URLEncoder.encode(TextUtils.join("+", searchArray),"UTF-8")+"&maxResults=40&printType=books";
         Log.d("Query :",searchTerms);
-        //Toast.makeText(getActivity(),searchTerms,Toast.LENGTH_LONG).show();
 
         BookDetailsList bdl = new BookDetailsList();
         Bundle bundle = new Bundle();
@@ -118,7 +125,6 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         FragmentTransaction ft = fm.beginTransaction();
 
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//        ft.setCustomAnimations(R.anim.a_come_in,R.anim.b_come_out,R.anim.b_come_in,R.anim.a_come_out);
         ft.replace(R.id.fInnerContainers, bdl);
         ft.addToBackStack(bdl.getClass().getName());
         ft.commit();
@@ -130,7 +136,11 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         hideKeyboard(getActivity());
         boolean ret = false;
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-            setFragment();
+            try {
+                setFragment();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             ret = true;
         }
         return ret;
