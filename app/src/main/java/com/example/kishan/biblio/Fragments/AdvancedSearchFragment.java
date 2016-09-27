@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kishan.biblio.R;
+import com.software.shell.fab.FloatingActionButton;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -48,6 +49,8 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
 
     Button bSearch;
     Button clearFilter;
+
+    FloatingActionButton clearFab;
 
     View view;
 
@@ -87,6 +90,9 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
 
             clearFilter = (Button) view.findViewById(R.id.bClearFilter);
             clearFilter.setOnClickListener(this);
+
+            clearFab = (FloatingActionButton)view.findViewById(R.id.fbFabClear);
+            clearFab.setOnClickListener(this);
             /*
             bSearch = (Button) view.findViewById(R.id.bSearchFields);
             bSearch.setOnClickListener(this);
@@ -100,7 +106,7 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bClearFilter:
+            case R.id.fbFabClear:
                 keywords.setText("");
                 title.setText("");
                 authors.setText("");

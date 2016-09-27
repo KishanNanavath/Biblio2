@@ -1,23 +1,19 @@
 package com.example.kishan.biblio;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+import android.app.SearchManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
-import com.example.kishan.biblio.Fragments.BookDetailsList;
 import com.example.kishan.biblio.Fragments.NavigationDrawerFragment;
 
 public class MainActivity extends ActionBarActivity {
@@ -94,6 +90,11 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+//        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
+//        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+//        searchView
+//                .setSearchableInfo(searchManager.
+//                        getSearchableInfo(getComponentName()));
         return true;
     }
 
