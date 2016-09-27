@@ -32,14 +32,14 @@ public class BooksAsyncTask extends AsyncTask {
     ProgressDialog bar;
     Context con;
     int endPos;
-    BooksDetailsAdapter mBookAdapet;
+    RecyclerView.Adapter mBookAdapet;
     ArrayList<BooksGetter> mBookArray;
     RecyclerView mRecView;
     int nItems;
     SwipyRefreshLayout srl;
     int startPos;
 
-    public BooksAsyncTask(Context c, ArrayList<BooksGetter> myBooksArray, BooksDetailsAdapter myAdapter, RecyclerView myRecView) {
+    public BooksAsyncTask(Context c, ArrayList<BooksGetter> myBooksArray, RecyclerView.Adapter myAdapter, RecyclerView myRecView) {
         this.nItems = 0;
         this.startPos = 0;
         this.endPos = 0;
@@ -135,6 +135,7 @@ public class BooksAsyncTask extends AsyncTask {
     }
 
     protected void onPostExecute(Object o) {
+        Log.d("ok","ok");
         if (this.srl.isRefreshing()) {
             this.srl.setRefreshing(false);
         }

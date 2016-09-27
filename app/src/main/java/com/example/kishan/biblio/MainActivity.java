@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
+import com.example.kishan.biblio.Fragments.CategoriesPage;
 import com.example.kishan.biblio.Fragments.NavigationDrawerFragment;
 
 public class MainActivity extends ActionBarActivity {
@@ -38,7 +39,8 @@ public class MainActivity extends ActionBarActivity {
         setToolBar();
         setNavDrawer();
 
-        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+//        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+        CategoriesPage asf = new CategoriesPage();
 //        BookDetailsList asf = new BookDetailsList();
 //        Bundle bundle = new Bundle();
 //        bundle.putString("URL", url+"q=King&printType=books");

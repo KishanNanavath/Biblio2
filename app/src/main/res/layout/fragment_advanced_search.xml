@@ -212,7 +212,7 @@
         android:filterTouchesWhenObscured="true"
         app:layout_anchor="@id/cvParent"
         app:layout_anchorGravity="bottom|end|right"
-        app:rippleColor="@color/shadow_end_color"/>
+        app:rippleColor="@color/fab_material_grey_500"/>
 
 </android.support.v7.widget.CardView>
 </LinearLayout>

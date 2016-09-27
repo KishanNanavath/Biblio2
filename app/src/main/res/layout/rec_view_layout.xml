@@ -30,7 +30,7 @@
         android:src="@android:drawable/btn_plus"
         app:layout_anchor="@id/srlGetMoreData"
         app:layout_anchorGravity="bottom|end|right"
-        app:rippleColor="@color/shadow_end_color"/>
+        app:rippleColor="@color/cardview_shadow_end_color"/>
 
     <io.codetail.widget.RevealFrameLayout
         android:layout_gravity="bottom|right"
