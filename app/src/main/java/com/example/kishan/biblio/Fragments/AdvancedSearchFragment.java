@@ -3,6 +3,9 @@ package com.example.kishan.biblio.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -10,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -33,12 +37,17 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdvancedSearchFragment extends DialogFragment implements View.OnClickListener, TextView.OnEditorActionListener {
+public class AdvancedSearchFragment extends Fragment implements View.OnClickListener, TextView.OnEditorActionListener {
     EditText title;
     EditText authors;
     EditText keywords;
     EditText isbn;
+    EditText category;
+    EditText printType;
+    EditText publisher;
+
     Button bSearch;
+    Button clearFilter;
 
     View view;
 
@@ -52,7 +61,7 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
             if (Build.VERSION.SDK_INT <= 11)
                 ((ViewGroup) view.getParent()).removeView(view);
         } else {
-            getDialog().setTitle("Advanced Search");
+//            getDialog().setTitle("Advanced Search");
             view = inflater.inflate(R.layout.fragment_advanced_search, container, false);
 
             title = (EditText) view.findViewById(R.id.etSearchTitle);
@@ -67,6 +76,17 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
             isbn = (EditText) view.findViewById(R.id.etIsbn);
             isbn.setOnEditorActionListener(this);
 
+            category = (EditText) view.findViewById(R.id.etCategory);
+            category.setOnEditorActionListener(this);
+
+            printType = (EditText) view.findViewById(R.id.etPrintType);
+            printType.setOnEditorActionListener(this);
+
+            publisher = (EditText) view.findViewById(R.id.etPublisher);
+            publisher.setOnEditorActionListener(this);
+
+            clearFilter = (Button) view.findViewById(R.id.bClearFilter);
+            clearFilter.setOnClickListener(this);
             /*
             bSearch = (Button) view.findViewById(R.id.bSearchFields);
             bSearch.setOnClickListener(this);
@@ -79,6 +99,17 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bClearFilter:
+                keywords.setText("");
+                title.setText("");
+                authors.setText("");
+                category.setText("");
+                printType.setText("");
+                publisher.setText("");
+                isbn.setText("");
+                break;
+        }
         /*
         if (v.getId() == R.id.bSearchFields) {
             setFragment();
@@ -91,28 +122,40 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
 
         if (!keywords.getText().toString().equals("")) {
             searchArray.add(keywords.getText().toString()+ "\"");
-            keywords.setText("");
+//            keywords.setText("");
         }
         if (!title.getText().toString().equals("")) {
             searchArray.add("intitle:" + "\""+ title.getText().toString()+ "\"");
-            title.setText("");
+//            title.setText("");
         }
         if (!authors.getText().toString().equals("")) {
             searchArray.add("inauthor:" + "\""+ authors.getText().toString()+ "\"");
-            authors.setText("");
-        }
-        if (!isbn.getText().toString().equals("")) {
-            searchArray.add("isbn:" + "\""+ isbn.getText().toString()+ "\"");
-            isbn.setText("");
+//            authors.setText("");
         }
 
+        if (!category.getText().toString().equals("")) {
+            searchArray.add("subject:" + "\""+ category.getText().toString()+ "\"");
+//            category.setText("");
+        }
+        if (!printType.getText().toString().equals("")) {
+            searchArray.add("printType:" + "\""+ printType.getText().toString()+ "\"");
+//            authors.setText("");
+        }
+        if (!publisher.getText().toString().equals("")) {
+            searchArray.add("inpublisher:" + publisher.getText().toString());
+//            isbn.setText("");
+        }
+        if (!isbn.getText().toString().equals("")) {
+            searchArray.add("isbn:" + isbn.getText().toString());
+//            isbn.setText("");
+        }
         if (searchArray.size() == 0) {
             Toast.makeText(getActivity(), "Please fill any field", Toast.LENGTH_LONG).show();
             return;
         }
 
         String searchTerms = "";
-        searchTerms = URLEncoder.encode(TextUtils.join("+", searchArray),"UTF-8")+"&maxResults=40&printType=books";
+        searchTerms = URLEncoder.encode(TextUtils.join("+", searchArray),"UTF-8")+"&maxResults=40&printType=books&orderBy=newest";
         Log.d("Query :",searchTerms);
 
         BookDetailsList bdl = new BookDetailsList();
@@ -128,7 +171,14 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         ft.replace(R.id.fInnerContainers, bdl);
         ft.addToBackStack(bdl.getClass().getName());
         ft.commit();
-        getDialog().dismiss();
+//        getDialog().dismiss();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
@@ -137,7 +187,14 @@ public class AdvancedSearchFragment extends DialogFragment implements View.OnCli
         boolean ret = false;
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
             try {
-                setFragment();
+                if(isNetworkAvailable())
+                    setFragment();
+                else{
+                    AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                    alert.setTitle("Connectivity");
+                    alert.setMessage("Data connection unavailable");
+                    alert.show();
+                }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

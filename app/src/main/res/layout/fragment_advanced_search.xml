@@ -107,6 +107,84 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView4" />
 
+            <TextView
+                android:textColor="@color/primaryTextColor"
+                android:id="@+id/textView5"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/etIsbn"
+                android:text="Genre" />
+
+            <EditText
+                android:singleLine="true"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:id="@+id/etCategory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView5" />
+
+
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/primaryTextColor"
+                android:id="@+id/textView6"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/etCategory"
+                android:text="Print Type" />
+
+            <EditText
+                android:visibility="gone"
+                android:singleLine="true"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:id="@+id/etPrintType"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView6" />
+
+            <TextView
+                android:textColor="@color/primaryTextColor"
+                android:id="@+id/textView7"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/etPrintType"
+                android:text="Publisher" />
+
+            <EditText
+                android:singleLine="true"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:id="@+id/etPublisher"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView7" />
+
+            <Button
+                android:textColor="@color/primaryTextColor"
+                android:background="@color/accentColor"
+                android:id="@+id/bClearFilter"
+                android:text="Clear Filters"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPublisher" />
+
             <!--
             <Button
                 android:id="@+id/bSearchFields"

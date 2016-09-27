@@ -26,9 +26,6 @@
                 android:layout_weight="3"
                 android:padding="1dp">
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/ivBookImg"
                         android:layout_width="150dp"
@@ -38,7 +35,6 @@
                         android:adjustViewBounds="true"
                         android:src="@mipmap/ic_launcher"
                         android:transitionName="BookImage" />
-                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 

@@ -42,12 +42,12 @@ public class MainActivity extends ActionBarActivity {
         setToolBar();
         setNavDrawer();
 
-//        AdvancedSearchFragment asf = new AdvancedSearchFragment();
-        BookDetailsList asf = new BookDetailsList();
-        Bundle bundle = new Bundle();
-        bundle.putString("URL", url+"q=King&printType=books");
-        bundle.putString("TYPE", "online");
-        asf.setArguments(bundle);
+        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+//        BookDetailsList asf = new BookDetailsList();
+//        Bundle bundle = new Bundle();
+//        bundle.putString("URL", url+"q=King&printType=books");
+//        bundle.putString("TYPE", "online");
+//        asf.setArguments(bundle);
 
         FragmentManager fm = getSupportFragmentManager();
 
@@ -123,11 +123,11 @@ public class MainActivity extends ActionBarActivity {
             fragPopOut = R.anim.a_come_out;
         }
 
-        if (id == R.id.search) {
-            AdvancedSearchFragment myDialog = new AdvancedSearchFragment();
-
-            myDialog.show(getSupportFragmentManager().beginTransaction(),"My Dialog");
-        }
+//        if (id == R.id.search) {
+//            AdvancedSearchFragment myDialog = new AdvancedSearchFragment();
+//
+//            myDialog.show(getSupportFragmentManager().beginTransaction(),"My Dialog");
+//        }
 
         return super.onOptionsItemSelected(item);
     }
