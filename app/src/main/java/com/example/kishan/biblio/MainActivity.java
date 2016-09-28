@@ -39,6 +39,7 @@ public class MainActivity extends ActionBarActivity {
         setNavDrawer();
 
         AdvancedSearchFragment asf = new AdvancedSearchFragment();
+//        CategoriesPage asf = new CategoriesPage();
 
         FragmentManager fm = getSupportFragmentManager();
 

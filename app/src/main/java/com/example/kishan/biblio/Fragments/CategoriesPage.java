@@ -74,24 +74,24 @@ public class CategoriesPage extends Fragment {
     final String url = "https://www.googleapis.com/books/v1/volumes?q=";
 
     RecyclerView fictionView;
-    ArrayList<BooksGetter> booksGetterArrayList;
+    ArrayList<BooksGetter> fictionBooksGetterArrayList;
 
+    SwipyRefreshLayout srl;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_categories_page, container, false);
-
         String fictionQuery = "subject:\"Fiction\"";
         String educationQuery = "subject:\"Education\"";
         String horrorQuery = "subject:\"Horror\"";
 
-        booksGetterArrayList = new ArrayList<>();
-        CategoryAdapter categoryAdapter = new CategoryAdapter(booksGetterArrayList,getContext());
+        fictionBooksGetterArrayList = new ArrayList<>();
+        CategoryAdapter categoryAdapter = new CategoryAdapter(fictionBooksGetterArrayList,getContext());
         fictionView = (RecyclerView)view.findViewById(R.id.rvFiction);
 
         SwipyRefreshLayout srl = (SwipyRefreshLayout)view.findViewById(R.id.srlCategoryScroll);
-        new BooksAsyncTask(getActivity(),booksGetterArrayList,categoryAdapter,fictionView).execute(url+ URLEncoder.encode(fictionQuery),0,srl);
+        new BooksAsyncTask(getActivity(),fictionBooksGetterArrayList,categoryAdapter,fictionView).execute(url+ URLEncoder.encode(fictionQuery),0,srl);
 
         fictionView.setAdapter(categoryAdapter);
         fictionView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
