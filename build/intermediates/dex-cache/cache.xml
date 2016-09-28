@@ -2,193 +2,214 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Kishan\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.9\872ec63b41181e29ad5a3723f1417356e2d2c0f2\slf4j-api-1.7.9.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_64b6dc0bd1f0c5575789655e5ec2a8b9268c59dc.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_b222e857b1f2f3d26ddda4c6a667537716018244.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.0_05c0b91f02c90942375264345776998ff9bd47b6.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.0_17c78f95981474704af73182d90014aedb2cd811.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="f936b7342908d35ae2092bb253067c48c833fdd1">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_19667d04723db2a5b55963f7717e40d70a0f2a72.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="dec2d0c6925edbbb78a667ee1319a69487e325b2">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\instant-run_205b5a6e836aeabba36581e10782aa967dbe05ad.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.traex.rippleeffect\library\1.3\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="ee17feb34ce104bc17d1a1e64346d7f779ebb066">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.traex.rippleeffect-library-1.3_113453814d20a301354b1acfc64c3fdd5f7f0c9c.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="1ac5b6d36ed6d2e0b6b6e6909bc4e1fb86cf1923">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-palette-v7-24.2.0_1a313dfb4dc0ac847101e4a1ee5d89a704c03156.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.0_79691840677e37b71ba9310b3a5a797b49d30621.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.0_2aebd43b1637e03088ab86069f3321959aead1a6.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="96e33a7aaee00ab64270e2a9887b8f9ef32c8b73">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.0_4b29cbff09985afa77040ab558e64da7c160103e.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_e389635b9523292860c36d47f2471d56035c6201.jar" />
+    </item>
+    <item
+        jar="C:\Users\Balkishan\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.9\872ec63b41181e29ad5a3723f1417356e2d2c0f2\slf4j-api-1.7.9.jar"
+        jumboMode="true"
         revision="24.0.2"
         sha1="872ec63b41181e29ad5a3723f1417356e2d2c0f2">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\slf4j-api-1.7.9_0641d1ede0de0196d84ff65240fe4dd719d26744.jar" />
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\slf4j-api-1.7.9_0a8acae80785e7800b8d1aa0a84ae3c050d954ad.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_e56e5cda97a779acb0659bb6e0fe2da93df8413c.jar" />
-    </item>
-    <item
-        jar="E:\AS\Android-SDK\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_ea46aefba9ec7b82535cc94d55c79f5f8e30be4d.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\uitools\1.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="418307d960be5f7c5fe13794b7283f5fd09d0c17">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-uitools-1.1.0_5f789f6f269f822dfc31afd687985fba5e99244d.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="3b7105277df9a8013468215c451ddefac2499d3a">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-palette-v7-24.2.1_092b3ac8d1a36b8e3593ec708841bd1ea0a858f4.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\viewmover\1.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="3d6dc28c575755c91be7f6a69803e4ebe98c7c7d">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-viewmover-1.1.0_9dd8596f25c18107b30ac61945801a8144de298d.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\fab\1.1.2\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="48bbecbdd3ed42e9df1b94a945480838e3bb208b">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-fab-1.1.2_7892ebb388f5ad7bd6b9f5c446c76f80dc109ec0.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_0b837fcbb933d1c1c14089fdd9feb9a8de9c7bd3.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_f921a26097819065d1ebf6ace0abc702fc2ef4fe.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_108d557e4f392cb0056c517485d0b6451852c2a0.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.2.1_0d4a89a992de03583ec216be4406a213598d23e9.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_89df9eea030e7be426eae94c0ac353aaf357cf49.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_8a6dfde0756d88a5f917c7e0a9897770bba6e37a.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.1_9d2dc70db7b5407cdc0f6f71314ddc6b39aa6ef1.jar" />
-    </item>
-    <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_37388b88fa140e627d120155ac834ff0b8d532f9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Kishan\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
-        jumboMode="false"
+        jar="C:\Users\Balkishan\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="true"
         revision="24.0.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_8db71b8dea23a595cdd50ac877256bfd1e62ed4b.jar" />
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_41cce3c78a797ed8a35b9bcdd800532cb2e9a993.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\viewmover\1.1.0\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_8de10f50797591fb82870544548b962bdf8f4f27.jar" />
+        sha1="3d6dc28c575755c91be7f6a69803e4ebe98c7c7d">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-viewmover-1.1.0_9fdc9d88c6688bcc5e3c423d44c35e6a17d47c9f.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_fefe97a469cd8f0094d4086218bd994f97652be7.jar" />
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.0_ca27dccd30068f1c04c2ac6c5427d307c131b17a.jar" />
     </item>
     <item
-        jar="C:\Users\Kishan\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\library-2.4.0_d6f9142e09dbf8a1adf804ad535a0c4eb401c836.jar" />
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_2a83b908791779fb75153538e5ad064441eda430.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\design\24.2.0\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_aab06ac0a5927d30504d00da5101ed160413eed1.jar" />
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.0_6c01c10827b8060992a3ad3e51f26ec947d8d824.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.github.orangegangsters\swipy\1.2.3\jars\classes.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\fab\1.1.2\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="bb183283871cbff072b40a32e55e205ceac1dbe9">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.orangegangsters-swipy-1.2.3_d26cc3a0eff958522a8e0e6b72fb330a6db0a25c.jar" />
+        sha1="48bbecbdd3ed42e9df1b94a945480838e3bb208b">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-fab-1.1.2_601bfdd4ab59b083967af8679fca357382215166.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
+        jar="C:\Users\Balkishan\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.0\support-annotations-24.2.0.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_dcef842bfa9d54b0cde90ade9dd38892abd76eba.jar" />
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.0_8c433e5ca96b238cca0604d722afb21b1d83ffad.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.github.ozodrukh\CircularReveal\1.1.1\jars\classes.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.0_e5cbb2dde401456a2f54f7afddda3c973501d965.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.0_d6542fa8bc7f16d5147d1248f70e3d4cb7994e96.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.shell-software\uitools\1.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="418307d960be5f7c5fe13794b7283f5fd09d0c17">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.shell-software-uitools-1.1.0_86920bdc73683924e7524a5d829317e89ee08d60.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="c755536e5a100d9c76c8ea0b72f76c018f7a9de2">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.2.0_0ec72a85cbfc3000afbee82d5a6346032e5a195b.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.0_7f1d9344107315d9fd3f2ed955d83f8287e097dc.jar" />
+    </item>
+    <item
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.ozodrukh\CircularReveal\1.1.1\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
         sha1="e3a3d62fab67ccb83f386a4c092bfb5747ea15a7">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.ozodrukh-CircularReveal-1.1.1_a61d247322d2fcbd864ea26a4dfbaf2c789ece57.jar" />
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.ozodrukh-CircularReveal-1.1.1_63151caea9ad50c9a2f576c7c88845b3273cd600.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_7d521c5cbf4b0da0a731953c684851e8bb9bb169.jar" />
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_b0afed4204435b6625c7fd2cff52db711321ab80.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_3f6bd875022a2eab96395df73d094d47220f0282.jar" />
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.0_8dea51cbfc9c375ef7078e8b9fa6b3595ae9e65e.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="false"
+        jar="D:\My Files\Biblio2\app\build\intermediates\exploded-aar\com.github.orangegangsters\swipy\1.2.3\jars\classes.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_2bf57af70821ef4dd981f74d8d6d9e7a04799260.jar" />
+        sha1="bb183283871cbff072b40a32e55e205ceac1dbe9">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.github.orangegangsters-swipy-1.2.3_6c747d23df1f8e45574baf2a4b126e703e8203d6.jar" />
     </item>
     <item
-        jar="E:\Studio_Files\Biblio2\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\Balkishan\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
         revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="E:\Studio_Files\Biblio2\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_b2de7478ea3014e55cbcb66f768a1b4777550cf6.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\My Files\Biblio2\app\build\intermediates\pre-dexed\debug\library-2.4.0_4fcd7359b3d603b70df68efaa9240a93a24b892e.jar" />
     </item>
 
 </items>

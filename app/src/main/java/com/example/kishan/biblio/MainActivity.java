@@ -1,6 +1,7 @@
 package com.example.kishan.biblio;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,20 +33,12 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();
         setToolBar();
         setNavDrawer();
 
-//        AdvancedSearchFragment asf = new AdvancedSearchFragment();
-        CategoriesPage asf = new CategoriesPage();
-//        BookDetailsList asf = new BookDetailsList();
-//        Bundle bundle = new Bundle();
-//        bundle.putString("URL", url+"q=King&printType=books");
-//        bundle.putString("TYPE", "online");
-//        asf.setArguments(bundle);
+        AdvancedSearchFragment asf = new AdvancedSearchFragment();
 
         FragmentManager fm = getSupportFragmentManager();
 
@@ -92,11 +85,6 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-//        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
-//        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-//        searchView
-//                .setSearchableInfo(searchManager.
-//                        getSearchableInfo(getComponentName()));
         return true;
     }
 
