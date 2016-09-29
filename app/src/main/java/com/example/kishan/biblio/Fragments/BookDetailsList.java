@@ -1,7 +1,12 @@
 package com.example.kishan.biblio.Fragments;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +55,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     String type;
     int startIndex = 0;
     FloatingActionButton fab;
+    private Paint p = new Paint();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -160,12 +167,40 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 
             BooksList.setAdapter(adapter);
             BooksList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            initSwipe();
         }
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(type);
         ((ActionBarActivity)getActivity()).getSupportActionBar().setSubtitle(null);
 
         return view;
+    }
+
+    private void initSwipe() {
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+
+//                if(direction == ItemTouchHelper.LEFT){
+                    adapter.removeItem(position);
+//                }
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(BooksList);
+    }
+
+    private void removeView(){
+        if(view.getParent()!=null) {
+            ((ViewGroup) view.getParent()).removeView(view);
+        }
     }
 
     private RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {

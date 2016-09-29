@@ -183,6 +183,12 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         return booksArray.size();
     }
 
+    public void removeItem(int position) {
+        booksArray.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, booksArray.size());
+    }
+
     public class MyBDHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView bookImage;
         TextView title;

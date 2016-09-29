@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="7"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <ImageView
-        android:id="@+id/ivNavIcon"
-        android:src="@drawable/book_open_variant"
-        android:layout_weight="3"
-        android:layout_gravity="center"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-    <TextView
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:text="Option"
-        android:id="@+id/tvOptions" />
-    <TextView
-        android:id="@+id/tvNumRows"
-        android:gravity="center_vertical"
-        android:layout_weight="3"
-        android:text="count"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp" />
+        <ImageView
+            android:id="@+id/ivNavIcon"
+            android:src="@drawable/book_open_variant"
+            android:tint="@color/accentColor"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:text="Option"
+            android:id="@+id/tvOptions" />
+        <TextView
+            android:id="@+id/tvNumRows"
+            android:gravity="center_vertical"
+            android:layout_weight="3"
+            android:text="count"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+    <View
+    android:background="#339e9e9e"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"/>
 </LinearLayout>
