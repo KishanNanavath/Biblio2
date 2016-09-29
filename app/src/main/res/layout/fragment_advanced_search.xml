@@ -187,17 +187,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etPublisher" />
 
-            <!--
-            <Button
-                android:id="@+id/bSearchFields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/etIsbn"
-                android:text="Search" />
-            !-->
-
         </RelativeLayout>
     </ScrollView>
 

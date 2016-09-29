@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kishan.biblio.Database.BooksDatabase;
@@ -61,6 +62,7 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         holder.option.setText(optionsArray.get(position));
 
+
         BooksDatabase database = new BooksDatabase(con);
         database.open();
 
@@ -68,15 +70,18 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
         switch (optionsArray.get(position)) {
             case "Have Read":
                 numRows = database.getNumRows(database.DATABASE_TABLE_HAVE_READ);
+                holder.navIcon.setImageResource(R.drawable.book_plus);
                 break;
             case "Reading":
                 numRows = database.getNumRows(database.DATABASE_TABLE_READING);
+                holder.navIcon.setImageResource(R.drawable.book_open_page_variant);
                 break;
             case "Want to Read":
                 numRows = database.getNumRows(database.DATABASE_TABLE_WANT_TO_READ);
+                holder.navIcon.setImageResource(R.drawable.bookmark);
                 break;
             case "Search Books":
-
+                holder.navIcon.setImageResource(R.drawable.magnify);
                 break;
             case "Close Library":
                 break;
@@ -165,11 +170,13 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView option;
         TextView numOfRows;
+        ImageView navIcon;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             option = (TextView) itemView.findViewById(R.id.tvOptions);
             numOfRows = (TextView) itemView.findViewById(R.id.tvNumRows);
+            navIcon = (ImageView) itemView.findViewById(R.id.ivNavIcon);
         }
     }
 }

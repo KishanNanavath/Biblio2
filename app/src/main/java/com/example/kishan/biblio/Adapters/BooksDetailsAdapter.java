@@ -18,6 +18,7 @@ import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.example.kishan.biblio.Database.BooksDatabase;
 import com.example.kishan.biblio.Fragments.BookFrameFragment;
 import com.example.kishan.biblio.Getters.BooksGetter;
@@ -74,6 +75,8 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
         holder.rating.setText(thisBook.getRating());
 
+
+
         Log.d("TYPE In Adapter :", type);
         if (type.equals("online")) {
             if (!thisBook.getImageLinks().split("~")[0].equals("")) {
@@ -90,9 +93,10 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         }
 
         final View imageView = holder.bookImage;
-        holder.bookImage.setOnClickListener(new View.OnClickListener() {
+
+        holder.ripContainer.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleView rippleView) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("BookDetails", thisBook);
                 bundle.putString("TYPE", type);
@@ -108,6 +112,25 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
                 ft.commit();
             }
         });
+
+//        holder.bookImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("BookDetails", thisBook);
+//                bundle.putString("TYPE", type);
+//
+//                BookFrameFragment bff = new BookFrameFragment();
+//                bff.setArguments(bundle);
+//
+//                FragmentTransaction ft = fm.beginTransaction();
+//                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//
+//                ft.replace(R.id.fInnerContainers, bff);
+//                ft.addToBackStack(null);
+//                ft.commit();
+//            }
+//        });
 
         boolean up = false;
         up = prevPos>=position;
@@ -167,6 +190,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         TextView category;
         TextView rating;
         ImageView close;
+        RippleView ripContainer;
 
         public MyBDHolder(View itemView) {
             super(itemView);
@@ -176,37 +200,62 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
             category = (TextView) itemView.findViewById(R.id.tvCategory);
             rating = (TextView) itemView.findViewById(R.id.tvRating);
             close = (ImageView) itemView.findViewById(R.id.ibClose);
+            ripContainer = (RippleView) itemView.findViewById(R.id.ripContainer);
             close.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.ibClose) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(con);
-                alert.setTitle("Alert!!");
-                alert.setMessage("Are you sure to delete record");
+            switch(v.getId()){
+                case R.id.ibClose:
+                    AlertDialog.Builder alert = new AlertDialog.Builder(con);
+                    alert.setTitle("Alert!!");
+                    alert.setMessage("Are you sure to delete record");
 
-                alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //do your work here
-                        dialog.dismiss();
-                        delete(getPosition());
-                        Log.d("DELETE : ", getPosition() + "");
-                    }
-                });
+                    alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //do your work here
+                            dialog.dismiss();
+                            delete(getPosition());
+                            Log.d("DELETE : ", getPosition() + "");
+                        }
+                    });
 
-                alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                    alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
 
-                alert.show();
-
-
+                    alert.show();
+                    break;
             }
+//            if (v.getId() == R.id.ibClose) {
+//                AlertDialog.Builder alert = new AlertDialog.Builder(con);
+//                alert.setTitle("Alert!!");
+//                alert.setMessage("Are you sure to delete record");
+//
+//                alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        //do your work here
+//                        dialog.dismiss();
+//                        delete(getPosition());
+//                        Log.d("DELETE : ", getPosition() + "");
+//                    }
+//                });
+//
+//                alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                alert.show();
+//            }
         }
 
         private void delete(int position) {

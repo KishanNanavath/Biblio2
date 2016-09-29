@@ -6,7 +6,8 @@
     android:layout_height="wrap_content">
 
     <com.andexert.library.RippleView
-        app:rv_rippleDuration="100"
+        android:id="@+id/ripContainer"
+        app:rv_rippleDuration="200"
         app:rv_zoom="true"
         app:rv_color="@color/accentColor"
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            app:cardElevation="10dp">
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
