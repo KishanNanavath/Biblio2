@@ -12,25 +12,34 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
+import com.example.kishan.biblio.Fragments.BookDetailsList;
 import com.example.kishan.biblio.Fragments.CategoriesPage;
 import com.example.kishan.biblio.Fragments.NavigationDrawerFragment;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import io.codetail.animation.SupportAnimator;
 import io.codetail.animation.ViewAnimationUtils;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements SearchView.OnQueryTextListener {
 
     public Toolbar myBar;
     DrawerLayout drawerLayout;
+    SearchView searchView;
+    private Menu mMenu;
+    public String currentType;
 
     public int fragInAni = 0;
     public int fragOutANi = 0;
@@ -41,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentType = "";
 
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();
@@ -94,7 +104,12 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        this.mMenu = menu;
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        searchView = (SearchView)MenuItemCompat.getActionView(menu.findItem(R.id.search));
+        Log.d("Status",searchView.toString());
+        searchView.setOnQueryTextListener(this);
         return true;
     }
 
@@ -166,4 +181,49 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        searchView.setQuery("", false);
+        searchView.setIconified(true);
+
+        MenuItemCompat.collapseActionView(mMenu.findItem(R.id.search));
+
+        try {
+            searchQuery(query);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("Text Submit : ",query);
+        return false;
+    }
+
+    private void searchQuery(String query) throws UnsupportedEncodingException {
+        this.currentType = "online";
+
+        String url = "https://www.googleapis.com/books/v1/volumes?q=";
+
+        String searchTerms = URLEncoder.encode(query,"UTF-8")+"&maxResults=40&printType=books&orderBy=newest";
+        Log.d("Query :",searchTerms);
+
+        BookDetailsList bdl = new BookDetailsList();
+        Bundle bundle = new Bundle();
+        bundle.putString("URL", url + searchTerms);
+        bundle.putString("TYPE", "online");
+        bdl.setArguments(bundle);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.replace(R.id.fInnerContainers, bdl);
+        ft.addToBackStack(bdl.getClass().getName());
+        ft.commit();
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        Log.d("Text Change : ",newText);
+        return false;
+    }
 }

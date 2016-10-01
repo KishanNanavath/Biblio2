@@ -1,5 +1,6 @@
 package com.example.kishan.biblio.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -97,18 +98,22 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
                 drawerLayout.closeDrawer(navDrawView);
                 switch (holder.option.getText().toString()) {
                     case "Have Read":
+                        ((MainActivity)con).currentType = "HaveRead";
                         callFragment("HaveRead");
                         break;
                     case "Reading":
+                        ((MainActivity)con).currentType = "Reading";
                         callFragment("Reading");
                         break;
                     case "Want to Read":
+                        ((MainActivity)con).currentType = "WantToRead";
                         callFragment("WantToRead");
                         break;
-                    case "Search Books":
+                    case "Advanced Search":
                         callASF();
                         break;
                     case "Close Library":
+                        ((Activity)con).finish();
                         break;
                 }
             }
@@ -118,8 +123,11 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
 
                 Fragment upFrag = fm.findFragmentByTag(type);
                 if(upFrag != null && upFrag.isVisible()){
+                    Log.d("In ASF","FALSE");
                     return;
                 }
+
+                Log.d("In ASF","TRUE");
 
                 if (fm.getBackStackEntryCount()>0 && type.equals(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName()))
                     return;
@@ -144,7 +152,7 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
                 BookDetailsList bdl = new BookDetailsList();
                 Bundle bundle = new Bundle();
                 bundle.putString("URL", "");
-                bundle.putString("TYPE", type);
+                bundle.putString("TYPE", ((MainActivity)con).currentType);
                 bdl.setArguments(bundle);
 
                 boolean isFragmentInBackStack = fm.popBackStackImmediate(type, 0);

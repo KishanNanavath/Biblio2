@@ -77,7 +77,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void getArrayList() {
-        String[] options = {"Have Read","Reading","Want to Read","Search Books","Close Library"};
+        String[] options = {"Have Read","Reading","Want to Read","Advanced Search","Close Library"};
         for (int i=0;i<options.length;i++){
             optionsArray.add(options[i]);
         }

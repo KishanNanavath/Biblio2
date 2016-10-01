@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,7 +76,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
         holder.rating.setText(thisBook.getRating());
 
-
+        holder.ratingBar.setRating(Float.parseFloat(thisBook.getRating()==""?"0":thisBook.getRating()));
 
         Log.d("TYPE In Adapter :", type);
         if (type.equals("online")) {
@@ -197,6 +198,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         TextView rating;
         ImageView close;
         RippleView ripContainer;
+        AppCompatRatingBar ratingBar;
 
         public MyBDHolder(View itemView) {
             super(itemView);
@@ -207,6 +209,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
             rating = (TextView) itemView.findViewById(R.id.tvRating);
             close = (ImageView) itemView.findViewById(R.id.ibClose);
             ripContainer = (RippleView) itemView.findViewById(R.id.ripContainer);
+            ratingBar = (AppCompatRatingBar)itemView.findViewById(R.id.rbBookListRating);
             close.setOnClickListener(this);
         }
 

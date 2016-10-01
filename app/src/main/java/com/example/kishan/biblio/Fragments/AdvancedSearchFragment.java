@@ -28,6 +28,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 import com.software.shell.fab.FloatingActionButton;
 
@@ -160,6 +161,7 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
             return;
         }
 
+        ((MainActivity)getActivity()).currentType = "online";
         String searchTerms = "";
         searchTerms = URLEncoder.encode(TextUtils.join("+", searchArray),"UTF-8")+"&maxResults=40&printType=books&orderBy=newest";
         Log.d("Query :",searchTerms);

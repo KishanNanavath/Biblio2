@@ -132,6 +132,12 @@ public class BooksAsyncTask extends AsyncTask {
             }
             this.mBookArray.add(new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null));
         }
+        Collections.sort(mBookArray, new Comparator<BooksGetter>() {
+            @Override
+            public int compare(BooksGetter o1, BooksGetter o2) {
+                return -o1.getRating().compareTo(o2.getRating());
+            }
+        });
     }
 
     protected void onPostExecute(Object o) {

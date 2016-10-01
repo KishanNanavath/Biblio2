@@ -8,7 +8,7 @@
     <com.andexert.library.RippleView
         app:rv_alpha="200"
         android:id="@+id/ripContainer"
-        app:rv_rippleDuration="300"
+        app:rv_rippleDuration="350"
         app:rv_zoom="true"
         app:rv_type="rectangle"
         app:rv_color="#FF5722"
@@ -93,15 +93,14 @@
                         android:singleLine="true"
                         android:text="Rating"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
-                    <android.support.v7.widget.AppCompatRatingBar
-                        android:id="@+id/rbBookListRating"
-                        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    <RatingBar
+                        style="?attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:rating="3.5"
                         android:numStars="5"
-                        android:isIndicator="true"
-                        android:stepSize="0.1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:isIndicator="false"
+                        android:stepSize="0.1" />
                 </LinearLayout>
 
                 <ImageView
