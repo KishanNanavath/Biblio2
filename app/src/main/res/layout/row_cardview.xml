@@ -6,10 +6,12 @@
     android:layout_height="wrap_content">
 
     <com.andexert.library.RippleView
+        app:rv_alpha="200"
         android:id="@+id/ripContainer"
-        app:rv_rippleDuration="200"
+        app:rv_rippleDuration="350"
         app:rv_zoom="true"
-        app:rv_color="@color/accentColor"
+        app:rv_type="rectangle"
+        app:rv_color="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +25,6 @@
 
             <LinearLayout
                 android:layout_gravity="center"
-                android:background="#212121"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"

@@ -7,16 +7,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
 import com.example.kishan.biblio.Fragments.CategoriesPage;
 import com.example.kishan.biblio.Fragments.NavigationDrawerFragment;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+
+import io.codetail.animation.SupportAnimator;
+import io.codetail.animation.ViewAnimationUtils;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -115,11 +124,44 @@ public class MainActivity extends ActionBarActivity {
             fragPopOut = R.anim.a_come_out;
         }
 
-//        if (id == R.id.search) {
-//            AdvancedSearchFragment myDialog = new AdvancedSearchFragment();
+        if (id == R.id.search) {
+//            Toast.makeText(getApplicationContext(),"start",Toast.LENGTH_SHORT).show();
+//            int cx = (myBar.getLeft() + myBar.getRight())/2;
+//            int cy = (myBar.getTop() + myBar.getBottom())/2;
 //
-//            myDialog.show(getSupportFragmentManager().beginTransaction(),"My Dialog");
-//        }
+//            // get the final radius for the clipping circle
+//            int dx = Math.max(cx, myBar.getWidth() - cx);
+//            int dy = Math.max(cy, myBar.getHeight() - cy);
+//            float finalRadius = (float) Math.hypot(dx, dy);
+//
+//            int dur = 2000;
+//            SupportAnimator animator =
+//                    ViewAnimationUtils.createCircularReveal(myBar, cx, cy, finalRadius,0 );
+//            animator.setInterpolator(new FastOutSlowInInterpolator());
+//            animator.addListener(new SupportAnimator.AnimatorListener() {
+//                @Override
+//                public void onAnimationStart() {
+//                    myBar.setVisibility(View.VISIBLE);
+//                }
+//
+//                @Override
+//                public void onAnimationEnd() {
+//                    myBar.setVisibility(View.GONE);
+//                }
+//
+//                @Override
+//                public void onAnimationCancel() {
+//
+//                }
+//
+//                @Override
+//                public void onAnimationRepeat() {
+//
+//                }
+//            });
+//            animator.setDuration(dur);
+//            animator.start();
+        }
 
         return super.onOptionsItemSelected(item);
     }

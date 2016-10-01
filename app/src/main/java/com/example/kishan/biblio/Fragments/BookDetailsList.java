@@ -188,9 +188,12 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
 
-//                if(direction == ItemTouchHelper.LEFT){
+                if(!type.equals("online")){
                     adapter.removeItem(position);
-//                }
+                }
+                else{
+                    Toast.makeText(getContext(),"Nope",Toast.LENGTH_SHORT).show();
+                }
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
