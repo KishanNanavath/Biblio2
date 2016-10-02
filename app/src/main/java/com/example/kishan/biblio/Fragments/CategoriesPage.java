@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.kishan.biblio.Adapters.CategoryAdapter;
 import com.example.kishan.biblio.Getters.BooksGetter;
+import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 import com.example.kishan.biblio.Tasks.BooksAsyncTask;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
@@ -80,8 +81,13 @@ public class CategoriesPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if(((MainActivity)getContext()).myBar.getVisibility() == View.GONE)
+            ((MainActivity)getContext()).myBar.setVisibility(View.VISIBLE);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_categories_page, container, false);
+
         String fictionQuery = "subject:\"Fiction\"";
         String educationQuery = "subject:\"Education\"";
         String horrorQuery = "subject:\"Horror\"";

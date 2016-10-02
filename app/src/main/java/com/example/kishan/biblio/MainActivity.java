@@ -3,8 +3,10 @@ package com.example.kishan.biblio;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
@@ -40,6 +42,9 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
     SearchView searchView;
     private Menu mMenu;
     public String currentType;
+    Toolbar getMyBar;
+    CollapsingToolbarLayout ctl;
+
 
     public int fragInAni = 0;
     public int fragOutANi = 0;
@@ -51,6 +56,17 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentType = "";
+
+//        setContentView(R.layout.coord_layout);
+//        getMyBar = (Toolbar)findViewById(R.id.MyToolbar);
+//        setSupportActionBar(getMyBar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
+//        ctl = (CollapsingToolbarLayout)findViewById(R.id.collapse_toolbar);
+//        ctl.setTitle("Yo Homies");
+//
+//        ctl.setContentScrimColor(ContextCompat.getColor(getApplicationContext(),R.color.accentColor));
+
 
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();

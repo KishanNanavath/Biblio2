@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 
 import com.example.kishan.biblio.Adapters.NavDrawAdapter;
+import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 
 import java.util.ArrayList;
@@ -61,7 +62,6 @@ public class NavigationDrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.rec_view_layout, container, false);
-
 
         optionsList = (RecyclerView) view.findViewById(R.id.rvRecView);
         optionsArray = new ArrayList<>();

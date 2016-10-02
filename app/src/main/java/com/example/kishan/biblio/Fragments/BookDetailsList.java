@@ -61,11 +61,15 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if(((MainActivity)getContext()).myBar.getVisibility() == View.GONE)
+            ((MainActivity)getContext()).myBar.setVisibility(View.VISIBLE);
+
         if(view != null){
             if(Build.VERSION.SDK_INT<=11)
                 ((ViewGroup)view.getParent()).removeView(view);
         }else{
             view = inflater.inflate(R.layout.rec_view_layout, container, false);
+
 
             fab = (FloatingActionButton) view.findViewById(R.id.fbFab);
             fab.setVisibility(View.VISIBLE);

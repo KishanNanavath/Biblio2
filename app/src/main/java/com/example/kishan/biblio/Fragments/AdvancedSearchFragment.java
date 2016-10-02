@@ -60,6 +60,10 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if(((MainActivity)getContext()).myBar.getVisibility() == View.GONE)
+            ((MainActivity)getContext()).myBar.setVisibility(View.VISIBLE);
+
         // Inflate the layout for this fragment
         if (view != null) {
             if (Build.VERSION.SDK_INT <= 11)
@@ -67,6 +71,8 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
         } else {
 //            getDialog().setTitle("Advanced Search");
             view = inflater.inflate(R.layout.fragment_advanced_search, container, false);
+
+
 
             title = (EditText) view.findViewById(R.id.etSearchTitle);
             title.setOnEditorActionListener(this);
