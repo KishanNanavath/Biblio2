@@ -78,14 +78,6 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
 
         ctl = (CollapsingToolbarLayout)view.findViewById(R.id.collapse_toolbar);
 
-
-
-
-//        svView = view.findViewById(R.id.svInnerView);
-
-//        mainDetails = (CardView)view.findViewById(R.id.cvMainDetails);
-//        cdView = (CardView)view.findViewById(R.id.cdView);
-
         Bundle bundle = this.getArguments();
         thisBook = (BooksGetter) bundle.getSerializable("BookDetails");
         type = bundle.getString("TYPE");
@@ -114,15 +106,6 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
                         .placeholder(R.mipmap.ic_launcher)
                         .into(bookImg);
             }
-
-            /*
-            Picasso.with(bookImg.getContext())
-                    .load(thisBook.getImageLinks().split("~")[0].trim())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .into(bookImg);
-            */
-
-
         } else {
             Bitmap bmp = BitmapFactory.decodeByteArray(thisBook.getImageByteArray(), 0, thisBook.getImageByteArray().length);
             bookImg.setImageBitmap(bmp);
@@ -169,10 +152,6 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         } else {
             rating.setRating(Float.parseFloat(thisBook.getRating()));
         }
-
-//        imgBg.setOnTouchListener(this);
-//        cdView.setOnTouchListener(this);
-//        mainDetails.setOnTouchListener(this);
 
         return view;
     }
