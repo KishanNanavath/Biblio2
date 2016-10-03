@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
@@ -216,16 +217,28 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
                         p.setColor(Color.parseColor("#388E3C"));
                         RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());
                         c.drawRect(background,p);
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.bookmark_check);
+                        icon = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.bookmark_check);
+                        Rect icon_src = new Rect();
                         RectF icon_dest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
-                        c.drawBitmap(icon,null,icon_dest,p);
+                        if(icon != null){
+                            c.drawBitmap(icon,null,icon_dest,p);
+                        } else {
+                            Log.d("DEBUG","background is null");
+                        }
+//                        c.drawBitmap(icon,icon_src,icon_dest,p);
                     } else {
                         p.setColor(Color.parseColor("#D32F2F"));
                         RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
                         c.drawRect(background,p);
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.magnify);
+                        icon = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.magnify);
+                        Rect icon_src = new Rect();
                         RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-                        c.drawBitmap(icon,null,icon_dest,p);
+                        if(icon != null){
+                            c.drawBitmap(icon,null,icon_dest,p);
+                        } else {
+                            Log.d("DEBUG","background is null");
+                        }
+//                        c.drawBitmap(icon,icon_src,icon_dest,p);
                     }
 
                     super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
