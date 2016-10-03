@@ -157,7 +157,7 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         int red = Color.red(mutedDark);
         int green = Color.green(mutedDark);
         int blue = Color.blue(mutedDark);
-        title.setTextColor(Color.argb(1,red,green,blue));
+        getMyBar.setTitleTextColor(Color.RED);
 
         authors.setText(thisBook.getAuthors().replaceAll("~", ""));
         category.setText(thisBook.getCategories().replaceAll("~", ""));
