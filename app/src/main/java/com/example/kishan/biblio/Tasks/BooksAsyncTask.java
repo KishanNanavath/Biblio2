@@ -141,6 +141,7 @@ public class BooksAsyncTask extends AsyncTask {
     }
 
     protected void onPostExecute(Object o) {
+        Log.d("size",mBookArray.size()+"");
         Log.d("ok","ok");
         if (this.srl.isRefreshing()) {
             this.srl.setRefreshing(false);
