@@ -17,7 +17,6 @@
         <android.support.design.widget.CollapsingToolbarLayout
             app:titleEnabled="true"
             android:id="@+id/collapse_toolbar"
-            app:titleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:expandedTitleMarginEnd="64dp"

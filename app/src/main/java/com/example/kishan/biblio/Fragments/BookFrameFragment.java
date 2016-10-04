@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -140,7 +141,9 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         int red = Color.red(mutedDark);
         int green = Color.green(mutedDark);
         int blue = Color.blue(mutedDark);
-        getMyBar.setTitleTextColor(Color.RED);
+        getMyBar.setTitleTextColor(Color.WHITE);
+
+        ((MainActivity)getContext()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3A1212")));
 
         authors.setText(thisBook.getAuthors().replaceAll("~", ""));
         category.setText(thisBook.getCategories().replaceAll("~", ""));
