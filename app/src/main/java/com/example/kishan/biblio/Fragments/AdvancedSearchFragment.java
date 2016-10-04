@@ -4,6 +4,7 @@ package com.example.kishan.biblio.Fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -20,7 +22,10 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -36,6 +41,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import io.codetail.animation.SupportAnimator;
+import io.codetail.animation.ViewAnimationUtils;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -47,6 +55,7 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
     EditText category;
     EditText printType;
     EditText publisher;
+    View rippleLayer;
 
     Button bSearch;
     Button clearFilter;
@@ -60,6 +69,13 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getActivity().getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.setStatusBarColor(getActivity().getResources().getColor(R.color.primaryColorDark));
+        }
+
 
         if(((MainActivity)getContext()).myBar.getVisibility() == View.GONE)
             ((MainActivity)getContext()).myBar.setVisibility(View.VISIBLE);
@@ -100,6 +116,8 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
 
             clearFab = (FloatingActionButton)view.findViewById(R.id.fbFabClear);
             clearFab.setOnClickListener(this);
+
+            rippleLayer = view.findViewById(R.id.vRippleLayer);
             /*
             bSearch = (Button) view.findViewById(R.id.bSearchFields);
             bSearch.setOnClickListener(this);
@@ -114,13 +132,77 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fbFabClear:
-                keywords.setText("");
-                title.setText("");
-                authors.setText("");
-                category.setText("");
-                printType.setText("");
-                publisher.setText("");
-                isbn.setText("");
+                final int cx = (clearFab.getLeft() + clearFab.getRight())/2;
+                final int cy = (clearFab.getTop() + clearFab.getBottom())/2;
+
+                // get the final radius for the clipping circle
+                int dx = Math.max(cx, rippleLayer.getWidth() - cx);
+                int dy = Math.max(cy, rippleLayer.getHeight() - cy);
+                final float finalRadius = (float) Math.hypot(dx, dy)+10;
+
+                int dur = 800;
+                SupportAnimator animator =
+                        ViewAnimationUtils.createCircularReveal(rippleLayer, cx, cy, 0, finalRadius);
+                animator.setInterpolator(new AnticipateInterpolator());
+                animator.addListener(new SupportAnimator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart() {
+                        rippleLayer.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationEnd() {
+                        keywords.setText("");
+                        title.setText("");
+                        authors.setText("");
+                        category.setText("");
+                        printType.setText("");
+                        publisher.setText("");
+                        isbn.setText("");
+
+                        int dur = 800;
+                        SupportAnimator animator =
+                                ViewAnimationUtils.createCircularReveal(rippleLayer, cx, cy, finalRadius,0);
+                        animator.setInterpolator(new AnticipateInterpolator());
+                        animator.addListener(new SupportAnimator.AnimatorListener() {
+                            @Override
+                            public void onAnimationStart() {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd() {
+                                rippleLayer.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationCancel() {
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat() {
+
+                            }
+                        });
+                        animator.setDuration(dur);
+                        animator.start();
+                    }
+
+                    @Override
+                    public void onAnimationCancel() {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat() {
+
+                    }
+                });
+                animator.setDuration(dur);
+                animator.start();
+
+
                 break;
         }
         /*

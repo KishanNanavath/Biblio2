@@ -14,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -124,6 +125,7 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         searchView = (SearchView)MenuItemCompat.getActionView(menu.findItem(R.id.search));
+        searchView.setInputType(InputType.TYPE_CLASS_TEXT);
         Log.d("Status",searchView.toString());
         searchView.setOnQueryTextListener(this);
         return true;

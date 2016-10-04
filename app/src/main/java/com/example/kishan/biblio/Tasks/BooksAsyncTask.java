@@ -130,7 +130,17 @@ public class BooksAsyncTask extends AsyncTask {
                     sImageLinks = sImageLinks + imageLinksObject.getString("thumbnail");
                 }
             }
-            this.mBookArray.add(new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null));
+            boolean alreadyExists = false;
+            BooksGetter newBG = new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null);
+            for (int idx = 0;idx<this.mBookArray.size();idx++){
+                BooksGetter curBG = this.mBookArray.get(idx);
+                if(curBG.getTitle().equals(newBG.getTitle()) && curBG.getRating().compareTo(newBG.getRating()) >= 0){
+                    alreadyExists = true;
+                    break;
+                }
+            }
+            if(!alreadyExists)
+                this.mBookArray.add(newBG);
         }
         Collections.sort(mBookArray, new Comparator<BooksGetter>() {
             @Override

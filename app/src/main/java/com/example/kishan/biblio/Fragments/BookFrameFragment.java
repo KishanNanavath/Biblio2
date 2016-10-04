@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -123,7 +126,13 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         int mutedDark = palette.getDarkMutedColor(defaulty);
         Log.d("Muted Color",mutedDark+"");
 
-        ctl.setContentScrimColor(vibrantDark);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getActivity().getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+
+//        ctl.setContentScrimColor(vibrantDark);
         bookImg.setBackgroundColor(mutedLight);
 
         title = (TextView) view.findViewById(R.id.tvBookTitle);
@@ -143,7 +152,7 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         int blue = Color.blue(mutedDark);
         getMyBar.setTitleTextColor(Color.WHITE);
 
-        ((MainActivity)getContext()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3A1212")));
+//        ((MainActivity)getContext()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3A1212")));
 
         authors.setText(thisBook.getAuthors().replaceAll("~", ""));
         category.setText(thisBook.getCategories().replaceAll("~", ""));

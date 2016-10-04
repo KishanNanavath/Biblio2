@@ -76,7 +76,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
         holder.rating.setText(thisBook.getRating());
 
-        holder.ratingBar.setRating(Float.parseFloat(thisBook.getRating()==""?"0":thisBook.getRating()));
+        holder.ratingBar.setRating(Float.parseFloat(thisBook.getRating().isEmpty()?"0":thisBook.getRating()));
 
         Log.d("TYPE In Adapter :", type);
         if (type.equals("online")) {

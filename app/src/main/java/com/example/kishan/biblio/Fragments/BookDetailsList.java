@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Toast;
@@ -62,6 +63,12 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getActivity().getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.setStatusBarColor(getActivity().getResources().getColor(R.color.primaryColorDark));
+        }
+
         if(((MainActivity)getContext()).myBar.getVisibility() == View.GONE)
             ((MainActivity)getContext()).myBar.setVisibility(View.VISIBLE);
 
@@ -73,7 +80,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
 
 
             fab = (FloatingActionButton) view.findViewById(R.id.fbFab);
-            fab.setVisibility(View.VISIBLE);
+//            fab.setVisibility(View.VISIBLE);
 
             final View myView = view.findViewById(R.id.awesome_card);
 
