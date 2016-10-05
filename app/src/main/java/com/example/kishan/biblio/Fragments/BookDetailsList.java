@@ -181,7 +181,9 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
             BooksList.setAdapter(adapter);
             BooksList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            initSwipe();
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+                initSwipe();
+            }
         }
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(type);
@@ -191,7 +193,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
     }
 
     private void initSwipe() {
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -237,7 +239,7 @@ public class BookDetailsList extends Fragment implements SwipeRefreshLayout.OnRe
                         p.setColor(Color.parseColor("#D32F2F"));
                         RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
                         c.drawRect(background,p);
-                        icon = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.magnify);
+                        icon = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.delete_forever);
                         Rect icon_src = new Rect();
                         RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
                         if(icon != null){

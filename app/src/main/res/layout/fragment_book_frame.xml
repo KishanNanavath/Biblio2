@@ -105,7 +105,6 @@
                                 android:id="@+id/tvBookTitle"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:singleLine="true"
                                 android:text="Title"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -113,17 +112,16 @@
                                 android:id="@+id/tvBookAuthors"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:singleLine="true"
                                 android:text="Authors" />
 
                             <TextView
                                 android:id="@+id/tvBookCategory"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
-                                android:singleLine="true"
                                 android:text="Category" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/tvRating"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
@@ -139,7 +137,7 @@
 
                             <RatingBar
                                 android:id="@+id/rbBookRating"
-                                style="?android:attr/ratingBarStyleSmall"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:isIndicator="true"
@@ -147,7 +145,7 @@
 
                             <Button
                                 android:id="@+id/bAddBook"
-                                style="?android:attr/buttonStyleSmall"
+                                style="@style/Widget.AppCompat.Button.Colored"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="right"
