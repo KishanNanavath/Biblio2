@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -60,6 +61,7 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
         fragOutANi = ((MainActivity)con).fragOutANi;
         fragPopIn = ((MainActivity)con).fragPopIn;
         fragPopOut = ((MainActivity)con).fragPopOut;
+
     }
 
     @Override
@@ -73,7 +75,9 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
     public void onBindViewHolder(MyBDHolder holder, int position) {
         final BooksGetter thisBook = booksArray.get(position);
         holder.title.setText(thisBook.getTitle());
+        holder.title.setTypeface(((MainActivity)con).robotoBold);
         holder.authors.setText(thisBook.getAuthors().replaceAll("~", "\n"));
+        holder.authors.setTypeface(((MainActivity)con).robotoRegular);
         holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
         holder.rating.setText(thisBook.getRating());
 

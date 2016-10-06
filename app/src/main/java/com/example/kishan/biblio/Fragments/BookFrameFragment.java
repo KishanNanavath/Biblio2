@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -80,6 +81,8 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         ((MainActivity)getContext()).setSupportActionBar(getMyBar);
         ((MainActivity)getContext()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/roboto/Roboto-Bold.ttf");
+
         ctl = (CollapsingToolbarLayout)view.findViewById(R.id.collapse_toolbar);
 
         Bundle bundle = this.getArguments();
@@ -136,6 +139,7 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         bookImg.setBackgroundColor(mutedLight);
 
         title = (TextView) view.findViewById(R.id.tvBookTitle);
+        title.setTypeface(typeface);
         ctl.setTitle(thisBook.getTitle().replaceAll("~", ""));
 
         authors = (TextView) view.findViewById(R.id.tvBookAuthors);
@@ -188,7 +192,7 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.ivBookImg){
-            imgAni(v);
+//            imgAni(v);
         }
         if (v.getId() == R.id.bAddBook) {
             final Dialog popup = new Dialog(getActivity());

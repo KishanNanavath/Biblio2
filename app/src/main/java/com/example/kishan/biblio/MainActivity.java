@@ -2,6 +2,7 @@ package com.example.kishan.biblio;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentManager;
@@ -52,6 +53,8 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
     public int fragPopIn = 0;
     public int fragPopOut = 0;
     final String url = "https://www.googleapis.com/books/v1/volumes?";
+    public Typeface robotoBold;
+    public Typeface robotoRegular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,8 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
 //
 //        ctl.setContentScrimColor(ContextCompat.getColor(getApplicationContext(),R.color.accentColor));
 
+        robotoBold = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Bold.ttf");
+        robotoRegular = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Regular.ttf");
 
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();
@@ -136,65 +141,65 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        if (id == R.id.miFlipAnimation) {
-            fragInAni = R.anim.slide_frag_in;
-            fragOutANi = R.anim.slide_frag_out;
-            fragPopIn = R.anim.slide_frag_pop_in;
-            fragPopOut = R.anim.slide_frag_pop_out;
-        }
-
-        if (id == R.id.miSlideAnimation) {
-            fragInAni = R.anim.a_come_in;
-            fragOutANi = R.anim.b_come_out;
-            fragPopIn = R.anim.b_come_in;
-            fragPopOut = R.anim.a_come_out;
-        }
-
-        if (id == R.id.search) {
-//            Toast.makeText(getApplicationContext(),"start",Toast.LENGTH_SHORT).show();
-//            int cx = (myBar.getLeft() + myBar.getRight())/2;
-//            int cy = (myBar.getTop() + myBar.getBottom())/2;
+//        int id = item.getItemId();
 //
-//            // get the final radius for the clipping circle
-//            int dx = Math.max(cx, myBar.getWidth() - cx);
-//            int dy = Math.max(cy, myBar.getHeight() - cy);
-//            float finalRadius = (float) Math.hypot(dx, dy);
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 //
-//            int dur = 2000;
-//            SupportAnimator animator =
-//                    ViewAnimationUtils.createCircularReveal(myBar, cx, cy, finalRadius,0 );
-//            animator.setInterpolator(new FastOutSlowInInterpolator());
-//            animator.addListener(new SupportAnimator.AnimatorListener() {
-//                @Override
-//                public void onAnimationStart() {
-//                    myBar.setVisibility(View.VISIBLE);
-//                }
+//        if (id == R.id.miFlipAnimation) {
+//            fragInAni = R.anim.slide_frag_in;
+//            fragOutANi = R.anim.slide_frag_out;
+//            fragPopIn = R.anim.slide_frag_pop_in;
+//            fragPopOut = R.anim.slide_frag_pop_out;
+//        }
 //
-//                @Override
-//                public void onAnimationEnd() {
-//                    myBar.setVisibility(View.GONE);
-//                }
+//        if (id == R.id.miSlideAnimation) {
+//            fragInAni = R.anim.a_come_in;
+//            fragOutANi = R.anim.b_come_out;
+//            fragPopIn = R.anim.b_come_in;
+//            fragPopOut = R.anim.a_come_out;
+//        }
 //
-//                @Override
-//                public void onAnimationCancel() {
-//
-//                }
-//
-//                @Override
-//                public void onAnimationRepeat() {
-//
-//                }
-//            });
-//            animator.setDuration(dur);
-//            animator.start();
-        }
+//        if (id == R.id.search) {
+////            Toast.makeText(getApplicationContext(),"start",Toast.LENGTH_SHORT).show();
+////            int cx = (myBar.getLeft() + myBar.getRight())/2;
+////            int cy = (myBar.getTop() + myBar.getBottom())/2;
+////
+////            // get the final radius for the clipping circle
+////            int dx = Math.max(cx, myBar.getWidth() - cx);
+////            int dy = Math.max(cy, myBar.getHeight() - cy);
+////            float finalRadius = (float) Math.hypot(dx, dy);
+////
+////            int dur = 2000;
+////            SupportAnimator animator =
+////                    ViewAnimationUtils.createCircularReveal(myBar, cx, cy, finalRadius,0 );
+////            animator.setInterpolator(new FastOutSlowInInterpolator());
+////            animator.addListener(new SupportAnimator.AnimatorListener() {
+////                @Override
+////                public void onAnimationStart() {
+////                    myBar.setVisibility(View.VISIBLE);
+////                }
+////
+////                @Override
+////                public void onAnimationEnd() {
+////                    myBar.setVisibility(View.GONE);
+////                }
+////
+////                @Override
+////                public void onAnimationCancel() {
+////
+////                }
+////
+////                @Override
+////                public void onAnimationRepeat() {
+////
+////                }
+////            });
+////            animator.setDuration(dur);
+////            animator.start();
+//        }
 
         return super.onOptionsItemSelected(item);
     }
