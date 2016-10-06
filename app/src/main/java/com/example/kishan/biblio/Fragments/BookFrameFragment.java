@@ -18,6 +18,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -168,6 +170,12 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
         } else {
             rating.setRating(Float.parseFloat(thisBook.getRating()));
         }
+
+        TextView textView =(TextView)view.findViewById(R.id.tvLink);
+        textView.setClickable(true);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "<a href='"+thisBook.getSelfLink()+"'> Google </a>";
+        textView.setText(Html.fromHtml(text));
 
         return view;
     }

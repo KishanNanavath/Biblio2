@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class BooksDatabase {
     public static final String KEY_ROWID = "_id";
     //public static final String KEY_TYPE = "_type";
+    public static final String KEY_SELFLINK = "_selfLink";
     public static final String KEY_TITLE = "_title";
     public static final String KEY_AUTHORS = "_authors";
     public static final String KEY_RATING = "_rating";
@@ -45,6 +46,7 @@ public class BooksDatabase {
     String[] columns = new String[]{
             KEY_ROWID,
             //KEY_TYPE,
+            KEY_SELFLINK,
             KEY_TITLE,
             KEY_AUTHORS,
             KEY_RATING,
@@ -73,6 +75,7 @@ public class BooksDatabase {
     public ContentValues getContentValues(BooksGetter book){
         ContentValues contentValues = new ContentValues();
         //contentValues.put(KEY_TYPE,book.getType());
+        contentValues.put(KEY_SELFLINK, book.getSelfLink());
         contentValues.put(KEY_TITLE, book.getTitle());
         contentValues.put(KEY_AUTHORS, book.getAuthors());
         contentValues.put(KEY_RATING, book.getRating());
@@ -90,6 +93,7 @@ public class BooksDatabase {
 
         int iRow = c.getColumnIndex(KEY_ROWID);
         //int iType = c.getColumnIndex(KEY_TYPE);
+        int iSelfLink = c.getColumnIndex(KEY_SELFLINK);
         int iTitle = c.getColumnIndex(KEY_TITLE);
         int iAuthors = c.getColumnIndex(KEY_AUTHORS);
         int iRating = c.getColumnIndex(KEY_RATING);
@@ -103,6 +107,7 @@ public class BooksDatabase {
         for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
             int rowId = (int) c.getLong(iRow);
             //String type = c.getString(iType);
+            String selflink = c.getString(iSelfLink);
             String title = c.getString(iTitle);
             String authors = c.getString(iAuthors);
             String rating = c.getString(iRating);
@@ -113,7 +118,7 @@ public class BooksDatabase {
             String description = c.getString(iDescription);
             byte[] imageArray = c.getBlob(iImageArrayColumn);
 
-            results.add(new BooksGetter(rowId,title,authors,rating,publish,category,imageLinks,language,description,imageArray));
+            results.add(new BooksGetter(rowId,selflink,title,authors,rating,publish,category,imageLinks,language,description,imageArray));
         }
         return results;
     }
@@ -176,6 +181,7 @@ public class BooksDatabase {
                     "CREATE TABLE " +
                             DATABASE_TABLE + " ( " +
                             KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            KEY_SELFLINK + " TEXT, " +
                             KEY_TITLE + " TEXT, " +
                             KEY_AUTHORS + " TEXT, " +
                             KEY_RATING + " TEXT, " +
@@ -192,6 +198,7 @@ public class BooksDatabase {
                     "CREATE TABLE " +
                             DATABASE_TABLE_HAVE_READ + " ( " +
                             KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            KEY_SELFLINK + " TEXT, " +
                             KEY_TITLE + " TEXT, " +
                             KEY_AUTHORS + " TEXT, " +
                             KEY_RATING + " TEXT, " +
@@ -207,6 +214,7 @@ public class BooksDatabase {
                     "CREATE TABLE " +
                             DATABASE_TABLE_READING + " ( " +
                             KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            KEY_SELFLINK + " TEXT, " +
                             KEY_TITLE + " TEXT, " +
                             KEY_AUTHORS + " TEXT, " +
                             KEY_RATING + " TEXT, " +
@@ -223,6 +231,7 @@ public class BooksDatabase {
                     "CREATE TABLE " +
                             DATABASE_TABLE_WANT_TO_READ + " ( " +
                             KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            KEY_SELFLINK + " TEXT, " +
                             KEY_TITLE + " TEXT, " +
                             KEY_AUTHORS + " TEXT, " +
                             KEY_RATING + " TEXT, " +

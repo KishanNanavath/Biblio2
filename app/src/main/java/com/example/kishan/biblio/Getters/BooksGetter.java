@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class BooksGetter implements Serializable {
     public int rowId;
-    //public String type;
+    public String selfLink;
     public String title;
     public String authors;
     public String rating;
@@ -18,9 +18,9 @@ public class BooksGetter implements Serializable {
     public String description;
     public byte[] imageByteArray;
 
-    public BooksGetter(int rowID,String title, String authors, String rating, String publishDate, String categories, String imageLinks, String language, String description,byte[] byteArray) {
+    public BooksGetter(int rowID,String selfLink,String title, String authors, String rating, String publishDate, String categories, String imageLinks, String language, String description,byte[] byteArray) {
         this.rowId = rowID;
-        //this.type = type;
+        this.selfLink = selfLink;
         this.title = title;
         this.authors = authors;
         this.rating = rating;
@@ -32,11 +32,10 @@ public class BooksGetter implements Serializable {
         this.imageByteArray=byteArray;
     }
 
-    /*
-    public String getType() {
-        return type;
+    public String getSelfLink() {
+        return selfLink;
     }
-*/
+
     public int getRowId() {
         return rowId;
     }

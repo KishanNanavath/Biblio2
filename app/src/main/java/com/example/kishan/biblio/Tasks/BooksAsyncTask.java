@@ -85,6 +85,13 @@ public class BooksAsyncTask extends AsyncTask {
         this.nItems = itemsArray.length();
         for (int i = 0; i < itemsArray.length(); i++) {
             int j;
+
+            String selfLink = "-";
+
+            if(itemsArray.getJSONObject(i).has("selfLink")){
+                selfLink = itemsArray.getJSONObject(i).getString("selfLink");
+            }
+
             JSONObject volInfoObject = itemsArray.getJSONObject(i).getJSONObject("volumeInfo");
             String title = "-";
             String publishDate = "-";
@@ -131,7 +138,7 @@ public class BooksAsyncTask extends AsyncTask {
                 }
             }
             boolean alreadyExists = false;
-            BooksGetter newBG = new BooksGetter(0, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null);
+            BooksGetter newBG = new BooksGetter(0,selfLink, title, sAuthors, rating, publishDate, sCategories, sImageLinks, language, description, null);
             for (int idx = 0;idx<this.mBookArray.size();idx++){
                 BooksGetter curBG = this.mBookArray.get(idx);
                 if(curBG.getTitle().equals(newBG.getTitle()) && curBG.getRating().compareTo(newBG.getRating()) >= 0){
