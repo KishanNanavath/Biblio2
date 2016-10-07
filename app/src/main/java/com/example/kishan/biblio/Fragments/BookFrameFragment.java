@@ -48,11 +48,13 @@ import com.squareup.picasso.Picasso;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BookFrameFragment extends Fragment implements View.OnClickListener, View.OnTouchListener {
+public class BookFrameFragment extends Fragment implements View.OnClickListener {
 
     private View view;
     private BooksGetter thisBook;
     private ImageView bookImg;
+    private TextView descriptionName;
+    private TextView detailsName;
     private TextView title;
     private TextView authors;
     private TextView category;
@@ -73,36 +75,81 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_book_frame, container, false);
-
-        if(((MainActivity)getContext()).myBar.getVisibility() == View.VISIBLE)
-            ((MainActivity)getContext()).myBar.setVisibility(View.GONE);
-
-        getMyBar = (Toolbar)view.findViewById(R.id.MyToolbar);
-        ((MainActivity)getContext()).setSupportActionBar(getMyBar);
-        ((MainActivity)getContext()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/roboto/Roboto-Bold.ttf");
-
-        ctl = (CollapsingToolbarLayout)view.findViewById(R.id.collapse_toolbar);
-
         Bundle bundle = this.getArguments();
         thisBook = (BooksGetter) bundle.getSerializable("BookDetails");
         type = bundle.getString("TYPE");
 
-        addBook = (Button) view.findViewById(R.id.bAddBook);
-        addBook.setOnClickListener(this);
+        initChilds();
 
-//        imgBg = (LinearLayout) view.findViewById(R.id.llImgBg);
+        if(((MainActivity)getContext()).myBar.getVisibility() == View.VISIBLE){
+            ((MainActivity)getContext()).myBar.setVisibility(View.GONE);
+            ((MainActivity)getContext()).setSupportActionBar(getMyBar);
+            ((MainActivity)getContext()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ((MainActivity)getContext()).getSupportActionBar().setSubtitle(thisBook.getTitle().replaceAll("~", ""));
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getActivity().getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+
+        setValues();
+
+        return view;
+    }
+
+    private void initChilds() {
+        descriptionName = (TextView)view.findViewById(R.id.tvDescription);
+        detailsName = (TextView)view.findViewById(R.id.tvDetails);
+        getMyBar = (Toolbar)view.findViewById(R.id.MyToolbar);
         bookImg = (ImageView) view.findViewById(R.id.ivBookImg);
+        ctl = (CollapsingToolbarLayout)view.findViewById(R.id.collapse_toolbar);
+        addBook = (Button) view.findViewById(R.id.bAddBook);
+        title = (TextView) view.findViewById(R.id.tvBookTitle);
+        authors = (TextView) view.findViewById(R.id.tvBookAuthors);
+        category = (TextView) view.findViewById(R.id.tvBookCategory);
+        rating = (RatingBar) view.findViewById(R.id.rbBookRating);
+        description = (TextView) view.findViewById(R.id.tvBookDescription);
+        tvrating = (TextView) view.findViewById((R.id.tvRating));
+    }
+
+    private void setValues() {
+        ctl.setTitle(thisBook.getTitle().replaceAll("~", ""));
+        getMyBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        descriptionName.setTypeface(((MainActivity) getContext()).robotoRegular);
+        detailsName.setTypeface(((MainActivity) getContext()).robotoRegular);
+
+        title.setText(thisBook.getTitle().replaceAll("~", ""));
+        title.setTypeface(((MainActivity) getContext()).robotoCondensedBold);
+
+        authors.setText(thisBook.getAuthors().replaceAll("~", ""));
+        authors.setTypeface(((MainActivity) getContext()).robotoRegular);
+
+        category.setText(thisBook.getCategories().replaceAll("~", ""));
+        category.setTypeface(((MainActivity) getContext()).robotoRegular);
+
+        description.setText(thisBook.getDescription().replaceAll("~", ""));
+        description.setTypeface(((MainActivity) getContext()).robotoCondensedRegular);
+
+        if (thisBook.getRating().equals("")) {
+            rating.setVisibility(View.GONE);
+            tvrating.setText("No rating");
+        } else {
+            rating.setRating(Float.parseFloat(thisBook.getRating()));
+        }
+
+        addBook.setOnClickListener(this);
         bookImg.setOnClickListener(this);
 
-//        imageLayout = (LinearLayout)view.findViewById(R.id.llImageLayout);
-
-
         if (type.equals("online")) {
-//            && !thisBook.getImageLinks().split("~")[0].equals("")
             if(thisBook.getImageLinks().split("~").length>0 && !thisBook.getImageLinks().split("~")[0].equals("")){
                 Picasso.with(bookImg.getContext())
                         .load(thisBook.getImageLinks().split("~")[0].trim())
@@ -119,66 +166,8 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
             Bitmap bmp = BitmapFactory.decodeByteArray(thisBook.getImageByteArray(), 0, thisBook.getImageByteArray().length);
             bookImg.setImageBitmap(bmp);
         }
-
-
-        Palette palette = Palette.from(((BitmapDrawable)bookImg.getDrawable()).getBitmap()).generate();
-        int defaulty = 0X000000;
-        int vibrant = palette.getVibrantColor(defaulty);
-        int vibrantLight = palette.getLightVibrantColor(defaulty);
-        int vibrantDark = palette.getDarkVibrantColor(defaulty);
-        int muted = palette.getMutedColor(defaulty);
-        int mutedLight = palette.getLightMutedColor(defaulty);
-        int mutedDark = palette.getDarkMutedColor(defaulty);
-        Log.d("Muted Color",mutedDark+"");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getActivity().getWindow();
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-
-//        ctl.setContentScrimColor(vibrantDark);
-        bookImg.setBackgroundColor(mutedLight);
-
-        title = (TextView) view.findViewById(R.id.tvBookTitle);
-        title.setTypeface(typeface);
-        ctl.setTitle(thisBook.getTitle().replaceAll("~", ""));
-
-        authors = (TextView) view.findViewById(R.id.tvBookAuthors);
-        category = (TextView) view.findViewById(R.id.tvBookCategory);
-        rating = (RatingBar) view.findViewById(R.id.rbBookRating);
-        description = (TextView) view.findViewById(R.id.tvBookDescription);
-        tvrating = (TextView) view.findViewById((R.id.tvRating));
-
-        ((ActionBarActivity)getActivity()).getSupportActionBar().setSubtitle(thisBook.getTitle().replaceAll("~", ""));
-        title.setText(thisBook.getTitle().replaceAll("~", ""));
-
-        int red = Color.red(mutedDark);
-        int green = Color.green(mutedDark);
-        int blue = Color.blue(mutedDark);
-        getMyBar.setTitleTextColor(Color.WHITE);
-
-//        ((MainActivity)getContext()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3A1212")));
-
-        authors.setText(thisBook.getAuthors().replaceAll("~", ""));
-        category.setText(thisBook.getCategories().replaceAll("~", ""));
-        description.setText(thisBook.getDescription().replaceAll("~", ""));
-
-        if (thisBook.getRating().equals("")) {
-            rating.setVisibility(View.GONE);
-            tvrating.setText("No rating");
-        } else {
-            rating.setRating(Float.parseFloat(thisBook.getRating()));
-        }
-
-        TextView textView =(TextView)view.findViewById(R.id.tvLink);
-        textView.setClickable(true);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = "<a href='"+thisBook.getSelfLink()+"'> Google </a>";
-        textView.setText(Html.fromHtml(text));
-
-        return view;
     }
+
 
     public void imgAni(View v){
         ObjectAnimator flipOnY = ObjectAnimator.ofFloat(v,"rotationY",0,180);
@@ -199,9 +188,6 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.ivBookImg){
-//            imgAni(v);
-        }
         if (v.getId() == R.id.bAddBook) {
             final Dialog popup = new Dialog(getActivity());
             popup.setContentView(R.layout.dialog_pop_up);
@@ -266,22 +252,10 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener,
                 int idi = Integer.parseInt(id + "");
                 if(thisBook.getImageLinks().split("~").length >= 0)
                     new ImageLoadTask(getActivity()).execute(thisBook.getImageLinks().split("~")[0], idi, tableNames[i]);
-
-//                if(tableNames[i].equals("BookDetailsReading")){
-//                    database.setPaheNum(tableNames[i],idi,pageNum);
-//                }
             } else {
                 Toast.makeText(getActivity(), "Entry Already Exists", Toast.LENGTH_SHORT).show();
             }
         }
         database.close();
-    }
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
-//            childAni(v);
-        }
-        return true;
     }
 }

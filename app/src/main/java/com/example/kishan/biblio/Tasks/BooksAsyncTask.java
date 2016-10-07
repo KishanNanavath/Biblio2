@@ -69,6 +69,8 @@ public class BooksAsyncTask extends AsyncTask {
             HttpGet get = new HttpGet((String) params[0]);
             Data = (String) params[0];
             HttpResponse response = client.execute(get);
+            Log.d("Response Code : ",response.getStatusLine().getStatusCode()+"");
+            Log.d("Response Statement : ",response.getStatusLine().getReasonPhrase()+"");
             if (response.getStatusLine().getStatusCode() == 200) {
                 getJsonData(EntityUtils.toString(response.getEntity()));
             }

@@ -53,26 +53,19 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
     public int fragPopIn = 0;
     public int fragPopOut = 0;
     final String url = "https://www.googleapis.com/books/v1/volumes?";
-    public Typeface robotoBold;
     public Typeface robotoRegular;
+    public Typeface robotoBold;
+    public Typeface robotoLight;
+    public Typeface robotoCondensedRegular;
+    public Typeface robotoCondensedBold;
+    public Typeface robotoCondensedLight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentType = "";
 
-//        setContentView(R.layout.coord_layout);
-//        getMyBar = (Toolbar)findViewById(R.id.MyToolbar);
-//        setSupportActionBar(getMyBar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        ctl = (CollapsingToolbarLayout)findViewById(R.id.collapse_toolbar);
-//        ctl.setTitle("Yo Homies");
-//
-//        ctl.setContentScrimColor(ContextCompat.getColor(getApplicationContext(),R.color.accentColor));
-
-        robotoBold = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Bold.ttf");
-        robotoRegular = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Regular.ttf");
+        setFonts();
 
         setContentView(R.layout.activity_main);
         setDefaultAnimationResources();
@@ -93,6 +86,15 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
 
         getBaseContext().setTheme(R.style.AppTheme_BaseMy);
         //recreate();
+    }
+
+    private void setFonts() {
+        robotoBold = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Bold.ttf");
+        robotoRegular = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Regular.ttf");
+        robotoLight = Typeface.createFromAsset(getAssets(),"fonts/roboto/Roboto-Light.ttf");
+        robotoCondensedBold = Typeface.createFromAsset(getAssets(),"fonts/roboto/RobotoCondensed-Bold.ttf");
+        robotoCondensedLight = Typeface.createFromAsset(getAssets(),"fonts/roboto/RobotoCondensed-Light.ttf");
+        robotoCondensedRegular = Typeface.createFromAsset(getAssets(),"fonts/roboto/RobotoCondensed-Regular.ttf");
     }
 
     private void setDefaultAnimationResources() {
