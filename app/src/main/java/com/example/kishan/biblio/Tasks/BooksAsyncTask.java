@@ -72,7 +72,9 @@ public class BooksAsyncTask extends AsyncTask {
             Log.d("Response Code : ",response.getStatusLine().getStatusCode()+"");
             Log.d("Response Statement : ",response.getStatusLine().getReasonPhrase()+"");
             if (response.getStatusLine().getStatusCode() == 200) {
-                getJsonData(EntityUtils.toString(response.getEntity()));
+                String responseData = EntityUtils.toString(response.getEntity());
+                getJsonData(responseData);
+                Log.d("ResponseData : ",responseData);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -161,7 +163,6 @@ public class BooksAsyncTask extends AsyncTask {
 
     protected void onPostExecute(Object o) {
         Log.d("size",mBookArray.size()+"");
-        Log.d("ok","ok");
         if (this.srl.isRefreshing()) {
             this.srl.setRefreshing(false);
         }

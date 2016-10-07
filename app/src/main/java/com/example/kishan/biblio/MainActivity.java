@@ -78,14 +78,11 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
         FragmentManager fm = getSupportFragmentManager();
 
         FragmentTransaction ft = fm.beginTransaction();
-        //ft.setCustomAnimations(R.anim.a_come_in, R.anim.b_come_out, R.anim.b_come_in, R.anim.a_come_out);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.add(R.id.fInnerContainers, asf, AdvancedSearchFragment.class.getName());
-        //ft.addToBackStack(AdvancedSearchFragment.class.getName());
         ft.commit();
 
         getBaseContext().setTheme(R.style.AppTheme_BaseMy);
-        //recreate();
     }
 
     private void setFonts() {

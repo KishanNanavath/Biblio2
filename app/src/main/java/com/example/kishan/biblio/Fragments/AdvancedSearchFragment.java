@@ -201,15 +201,8 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
                 });
                 animator.setDuration(dur);
                 animator.start();
-
-
                 break;
         }
-        /*
-        if (v.getId() == R.id.bSearchFields) {
-            setFragment();
-        }
-        */
     }
 
     public void setFragment() throws UnsupportedEncodingException {
@@ -217,32 +210,25 @@ public class AdvancedSearchFragment extends Fragment implements View.OnClickList
 
         if (!keywords.getText().toString().equals("")) {
             searchArray.add(keywords.getText().toString()+ "\"");
-//            keywords.setText("");
         }
         if (!title.getText().toString().equals("")) {
             searchArray.add("intitle:" + "\""+ title.getText().toString()+ "\"");
-//            title.setText("");
         }
         if (!authors.getText().toString().equals("")) {
             searchArray.add("inauthor:" + "\""+ authors.getText().toString()+ "\"");
-//            authors.setText("");
         }
 
         if (!category.getText().toString().equals("")) {
             searchArray.add("subject:" + "\""+ category.getText().toString()+ "\"");
-//            category.setText("");
         }
         if (!printType.getText().toString().equals("")) {
             searchArray.add("printType:" + "\""+ printType.getText().toString()+ "\"");
-//            authors.setText("");
         }
         if (!publisher.getText().toString().equals("")) {
             searchArray.add("inpublisher:" + publisher.getText().toString());
-//            isbn.setText("");
         }
         if (!isbn.getText().toString().equals("")) {
             searchArray.add("isbn:" + isbn.getText().toString());
-//            isbn.setText("");
         }
         if (searchArray.size() == 0) {
             Toast.makeText(getActivity(), "Please fill any field", Toast.LENGTH_LONG).show();

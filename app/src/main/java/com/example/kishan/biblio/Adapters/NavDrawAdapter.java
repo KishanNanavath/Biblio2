@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.example.kishan.biblio.Database.BooksDatabase;
 import com.example.kishan.biblio.Fragments.AdvancedSearchFragment;
 import com.example.kishan.biblio.Fragments.BookDetailsList;
+import com.example.kishan.biblio.Fragments.CategoriesPage;
+import com.example.kishan.biblio.GenrePage;
 import com.example.kishan.biblio.MainActivity;
 import com.example.kishan.biblio.R;
 
@@ -84,6 +86,9 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
             case "Search Books":
                 holder.navIcon.setImageResource(R.drawable.magnify);
                 break;
+            case "Categories":
+                holder.navIcon.setImageResource(R.drawable.magnify);
+                break;
             case "Close Library":
                 break;
         }
@@ -111,6 +116,9 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
                         break;
                     case "Advanced Search":
                         callASF();
+                        break;
+                    case "Categories":
+                        callCategories();
                         break;
                     case "Close Library":
                         ((Activity)con).finish();
@@ -146,6 +154,34 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
                 }
             }
 
+            private void callCategories() {
+                String type = CategoriesPage.class.getName();
+
+                Fragment upFrag = fm.findFragmentByTag(type);
+                if(upFrag != null && upFrag.isVisible()){
+                    Log.d("In ASF","FALSE");
+                    return;
+                }
+
+                Log.d("In ASF","TRUE");
+
+                if (fm.getBackStackEntryCount()>0 && type.equals(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName()))
+                    return;
+                GenrePage asf = new GenrePage();
+
+                boolean isFragmentInBackStack = fm.popBackStackImmediate(CategoriesPage.class.getName(), 0);
+                if (!isFragmentInBackStack) {
+                    FragmentTransaction ft = fm.beginTransaction();
+                    //ft.setCustomAnimations(R.anim.a_come_in, R.anim.b_come_out, R.anim.b_come_in, R.anim.a_come_out);
+//                    ft.setCustomAnimations(fragInAni,fragOutANi,fragPopIn,fragPopOut);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+                    ft.replace(R.id.fInnerContainers, asf, CategoriesPage.class.getName());
+                    ft.addToBackStack(CategoriesPage.class.getName());
+                    ft.commit();
+                }
+            }
+
             private void callFragment(String type) {
                 if (fm.getBackStackEntryCount() > 0 && type.equals(fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 1).getName()))
                     return;
@@ -169,6 +205,7 @@ public class NavDrawAdapter extends RecyclerView.Adapter<NavDrawAdapter.MyViewHo
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

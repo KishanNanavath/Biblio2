@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eacfcf"
+    tools:context="com.example.kishan.biblio.GenrePage">
+
+    <TextView
+        android:text="Fiction"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:layout_marginBottom="50px"
+        android:id="@+id/srlFiction"
+        android:layout_width="match_parent"
+        android:layout_height="400px">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvFiction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+    <TextView
+        android:text="Romance"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:layout_marginBottom="50px"
+        android:id="@+id/srlRomance"
+        android:layout_width="match_parent"
+        android:layout_height="400px">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvRomance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+</LinearLayout>

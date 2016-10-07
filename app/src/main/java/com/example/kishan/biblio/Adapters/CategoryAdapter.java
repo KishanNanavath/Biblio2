@@ -52,6 +52,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.catego
                 .into(holder.categoryImage);
 
         holder.categoryTitle.setText(booksArray.get(position).getTitle());
+        Log.d("TITLE : ",holder.categoryTitle.getText().toString());
     }
 
     @Override
