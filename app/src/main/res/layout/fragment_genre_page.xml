@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#eacfcf"
     tools:context="com.example.kishan.biblio.GenrePage">
 
     <TextView
@@ -26,7 +25,7 @@
     </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
     <TextView
-        android:text="Romance"
+        android:text="Adventure"
         style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -58,7 +58,7 @@ public class GenrePage extends Fragment {
         adapter1 = new CategoryAdapter(romanceBooks,getContext());
 
         try {
-            new BooksAsyncTask(getActivity(),romanceBooks,adapter1,recRomance).execute(url+ URLEncoder.encode("subject:\"Romance\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
+            new BooksAsyncTask(getActivity(),romanceBooks,adapter1,recRomance).execute(url+ URLEncoder.encode("subject:\"Adventure\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

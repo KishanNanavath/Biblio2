@@ -66,82 +66,71 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
 
     @Override
     public MyBDHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layInf.inflate(R.layout.row_cardview, parent, false);
+        View view;
+//        if(booksArray.size()>0){
+            view = layInf.inflate(R.layout.row_cardview, parent, false);
+//        }
+//        else{
+//            view = layInf.inflate(R.layout.rec_view_placeholder, parent, false);
+//        }
         MyBDHolder holder = new MyBDHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(MyBDHolder holder, int position) {
-        final BooksGetter thisBook = booksArray.get(position);
-        holder.title.setText(thisBook.getTitle());
-        holder.title.setTypeface(((MainActivity)con).robotoBold);
-        holder.authors.setText(thisBook.getAuthors().replaceAll("~", "\n"));
-        holder.authors.setTypeface(((MainActivity)con).robotoRegular);
-        holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
-        holder.rating.setText(thisBook.getRating());
+        if(booksArray.size()>0){
+            final BooksGetter thisBook = booksArray.get(position);
+            holder.title.setText(thisBook.getTitle());
+            holder.title.setTypeface(((MainActivity)con).robotoBold);
+            holder.authors.setText(thisBook.getAuthors().replaceAll("~", "\n"));
+            holder.authors.setTypeface(((MainActivity)con).robotoRegular);
+            holder.category.setText(thisBook.getCategories().replaceAll("~", "\n"));
+            holder.rating.setText(thisBook.getRating());
 
-        holder.ratingBar.setRating(Float.parseFloat(thisBook.getRating().isEmpty()?"0":thisBook.getRating()));
+            holder.ratingBar.setRating(Float.parseFloat(thisBook.getRating().isEmpty()?"0":thisBook.getRating()));
 
-        Log.d("TYPE In Adapter :", type);
-        if (type.equals("online")) {
-            if (!thisBook.getImageLinks().split("~")[0].equals("")) {
-                Picasso.with(holder.bookImage.getContext())
-                        .load(thisBook.getImageLinks().split("~")[0].trim())
-                        .placeholder(R.mipmap.ic_launcher)
-                        .into(holder.bookImage);
+            Log.d("TYPE In Adapter :", type);
+            if (type.equals("online")) {
+                if (!thisBook.getImageLinks().split("~")[0].equals("")) {
+                    Picasso.with(holder.bookImage.getContext())
+                            .load(thisBook.getImageLinks().split("~")[0].trim())
+                            .placeholder(R.mipmap.ic_launcher)
+                            .into(holder.bookImage);
+                }
+            } else {
+                // if(thisBook.getImageByteArray().length>0){
+                Bitmap bmp = BitmapFactory.decodeByteArray(thisBook.getImageByteArray(), 0, thisBook.getImageByteArray().length);
+                holder.bookImage.setImageBitmap(bmp);
+                //}
             }
-        } else {
-            // if(thisBook.getImageByteArray().length>0){
-            Bitmap bmp = BitmapFactory.decodeByteArray(thisBook.getImageByteArray(), 0, thisBook.getImageByteArray().length);
-            holder.bookImage.setImageBitmap(bmp);
-            //}
+
+            final View imageView = holder.bookImage;
+
+            holder.ripContainer.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+                @Override
+                public void onComplete(RippleView rippleView) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("BookDetails", thisBook);
+                    bundle.putString("TYPE", type);
+
+                    BookFrameFragment bff = new BookFrameFragment();
+                    bff.setArguments(bundle);
+
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+                    ft.replace(R.id.fInnerContainers, bff);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                }
+            });
+
+            boolean up = false;
+            up = prevPos>=position;
+            rowAni(holder,up,position);
+            prevPos = position;
         }
-
-        final View imageView = holder.bookImage;
-
-        holder.ripContainer.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
-            @Override
-            public void onComplete(RippleView rippleView) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("BookDetails", thisBook);
-                bundle.putString("TYPE", type);
-
-                BookFrameFragment bff = new BookFrameFragment();
-                bff.setArguments(bundle);
-
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
-                ft.replace(R.id.fInnerContainers, bff);
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
-
-//        holder.bookImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("BookDetails", thisBook);
-//                bundle.putString("TYPE", type);
-//
-//                BookFrameFragment bff = new BookFrameFragment();
-//                bff.setArguments(bundle);
-//
-//                FragmentTransaction ft = fm.beginTransaction();
-//                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//
-//                ft.replace(R.id.fInnerContainers, bff);
-//                ft.addToBackStack(null);
-//                ft.commit();
-//            }
-//        });
-
-        boolean up = false;
-        up = prevPos>=position;
-        rowAni(holder,up,position);
-        prevPos = position;
     }
 
     public void rowAni(MyBDHolder holder,boolean up,int pos){
@@ -186,6 +175,8 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
 
     @Override
     public int getItemCount() {
+//        if(booksArray.size() == 0)
+//            return 1;
         return booksArray.size();
     }
 
@@ -207,15 +198,17 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
 
         public MyBDHolder(View itemView) {
             super(itemView);
-            bookImage = (ImageView) itemView.findViewById(R.id.ivBookImg);
-            title = (TextView) itemView.findViewById(R.id.tvTitle);
-            authors = (TextView) itemView.findViewById(R.id.tvAuthors);
-            category = (TextView) itemView.findViewById(R.id.tvCategory);
-            rating = (TextView) itemView.findViewById(R.id.tvRating);
-            close = (ImageView) itemView.findViewById(R.id.ibClose);
-            ripContainer = (RippleView) itemView.findViewById(R.id.ripContainer);
-            ratingBar = (AppCompatRatingBar)itemView.findViewById(R.id.rbBookListRating);
-            close.setOnClickListener(this);
+            if(booksArray.size()>0){
+                bookImage = (ImageView) itemView.findViewById(R.id.ivBookImg);
+                title = (TextView) itemView.findViewById(R.id.tvTitle);
+                authors = (TextView) itemView.findViewById(R.id.tvAuthors);
+                category = (TextView) itemView.findViewById(R.id.tvCategory);
+                rating = (TextView) itemView.findViewById(R.id.tvRating);
+                close = (ImageView) itemView.findViewById(R.id.ibClose);
+                ripContainer = (RippleView) itemView.findViewById(R.id.ripContainer);
+                ratingBar = (AppCompatRatingBar)itemView.findViewById(R.id.rbBookListRating);
+                close.setOnClickListener(this);
+            }
         }
 
         @Override
@@ -246,30 +239,6 @@ public class BooksDetailsAdapter extends RecyclerView.Adapter<BooksDetailsAdapte
                     alert.show();
                     break;
             }
-//            if (v.getId() == R.id.ibClose) {
-//                AlertDialog.Builder alert = new AlertDialog.Builder(con);
-//                alert.setTitle("Alert!!");
-//                alert.setMessage("Are you sure to delete record");
-//
-//                alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        //do your work here
-//                        dialog.dismiss();
-//                        delete(getPosition());
-//                        Log.d("DELETE : ", getPosition() + "");
-//                    }
-//                });
-//
-//                alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                alert.show();
-//            }
         }
 
         private void delete(int position) {

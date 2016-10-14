@@ -2,7 +2,10 @@ package com.example.kishan.biblio.Tasks;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -47,6 +51,19 @@ public class BooksAsyncTask extends AsyncTask {
         this.mRecView = myRecView;
         this.mBookAdapet = myAdapter;
         this.mBookArray = myBooksArray;
+        if(!isNetworkAvailable()){
+            AlertDialog.Builder alert = new AlertDialog.Builder(con);
+            alert.setTitle("Connectivity");
+            alert.setMessage("Data connection unavailable");
+            alert.show();
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) con.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     protected void onPreExecute() {
