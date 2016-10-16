@@ -180,7 +180,7 @@ public class BooksAsyncTask extends AsyncTask {
 
     protected void onPostExecute(Object o) {
         Log.d("size",mBookArray.size()+"");
-        if (this.srl.isRefreshing()) {
+        if (this.srl != null && this.srl.isRefreshing()) {
             this.srl.setRefreshing(false);
         }
         this.bar.dismiss();

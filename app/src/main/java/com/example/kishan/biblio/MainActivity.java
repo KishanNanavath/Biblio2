@@ -40,7 +40,7 @@ import io.codetail.animation.ViewAnimationUtils;
 public class MainActivity extends ActionBarActivity implements SearchView.OnQueryTextListener {
 
     public Toolbar myBar;
-    DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
     SearchView searchView;
     private Menu mMenu;
     public String currentType;
@@ -67,22 +67,22 @@ public class MainActivity extends ActionBarActivity implements SearchView.OnQuer
 
         setFonts();
 
-        setContentView(R.layout.activity_main);
-        setDefaultAnimationResources();
-        setToolBar();
-        setNavDrawer();
-
-        AdvancedSearchFragment asf = new AdvancedSearchFragment();
-//        CategoriesPage asf = new CategoriesPage();
-
-        FragmentManager fm = getSupportFragmentManager();
-
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.add(R.id.fInnerContainers, asf, AdvancedSearchFragment.class.getName());
-        ft.commit();
-
-        getBaseContext().setTheme(R.style.AppTheme_BaseMy);
+        setContentView(R.layout.material_view_pager_ex);
+//        setDefaultAnimationResources();
+//        setToolBar();
+//        setNavDrawer();
+//
+//        AdvancedSearchFragment asf = new AdvancedSearchFragment();
+////        CategoriesPage asf = new CategoriesPage();
+//
+//        FragmentManager fm = getSupportFragmentManager();
+//
+//        FragmentTransaction ft = fm.beginTransaction();
+//        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//        ft.add(R.id.fInnerContainers, asf, AdvancedSearchFragment.class.getName());
+//        ft.commit();
+//
+//        getBaseContext().setTheme(R.style.AppTheme_BaseMy);
     }
 
     private void setFonts() {

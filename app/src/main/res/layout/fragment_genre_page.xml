@@ -10,85 +10,134 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Large"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fiction" />
+            android:layout_height="wrap_content">
 
-        <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
-            android:id="@+id/srlFiction"
-            android:layout_width="match_parent"
-            android:layout_height="400px"
-            android:layout_marginBottom="50px">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvFiction"
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="Fiction" />
 
-            </android.support.v7.widget.RecyclerView>
-        </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
-
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Adventure" />
-
-        <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
-            android:id="@+id/srlAdventure"
-            android:layout_width="match_parent"
-            android:layout_height="400px"
-            android:layout_marginBottom="50px">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvAdventure"
+            <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+                android:id="@+id/srlFiction"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="400px"
+                android:layout_marginBottom="50px">
 
-            </android.support.v7.widget.RecyclerView>
-        </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvFiction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Large"
+                </android.support.v7.widget.RecyclerView>
+            </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bookmark" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Romance" />
+            android:layout_height="wrap_content">
 
-        <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
-            android:id="@+id/srlRomance"
-            android:layout_width="match_parent"
-            android:layout_height="400px"
-            android:layout_marginBottom="50px">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvRomance"
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="Adventure" />
 
-            </android.support.v7.widget.RecyclerView>
-        </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
-
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bio-graphy" />
-
-        <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
-            android:id="@+id/srlBiography"
-            android:layout_width="match_parent"
-            android:layout_height="400px"
-            android:layout_marginBottom="50px">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvBiography"
+            <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+                android:id="@+id/srlAdventure"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="400px"
+                android:layout_marginBottom="50px">
 
-            </android.support.v7.widget.RecyclerView>
-        </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvAdventure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bookmark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Romance" />
+
+            <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+                android:id="@+id/srlRomance"
+                android:layout_width="match_parent"
+                android:layout_height="400px"
+                android:layout_marginBottom="50px">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvRomance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bookmark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bio-graphy" />
+
+            <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+                android:id="@+id/srlBiography"
+                android:layout_width="match_parent"
+                android:layout_height="400px"
+                android:layout_marginBottom="50px">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvBiography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+            </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bookmark" />
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

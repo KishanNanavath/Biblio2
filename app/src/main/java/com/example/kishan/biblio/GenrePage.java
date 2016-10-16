@@ -54,7 +54,7 @@ public class GenrePage extends Fragment {
         adapterFiction = new CategoryAdapter(genreBooks,getContext());
 
         try {
-            new BooksAsyncTask(getActivity(),genreBooks,adapterFiction,recFiction).execute(url+ URLEncoder.encode("subject:\"Fiction\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
+            new BooksAsyncTask(getActivity(),genreBooks,adapterFiction,recFiction).execute(url+ URLEncoder.encode("subject:\"Fiction\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,null);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class GenrePage extends Fragment {
         adapterRomance = new CategoryAdapter(romanceBooks,getContext());
 
         try {
-            new BooksAsyncTask(getActivity(),romanceBooks,adapterRomance,recRomance).execute(url+ URLEncoder.encode("subject:\"Romance\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
+            new BooksAsyncTask(getActivity(),romanceBooks,adapterRomance,recRomance).execute(url+ URLEncoder.encode("subject:\"Romance\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,null);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class GenrePage extends Fragment {
         adapterAdventure = new CategoryAdapter(AdventureBooks,getContext());
 
         try {
-            new BooksAsyncTask(getActivity(),AdventureBooks,adapterAdventure,recAdventure).execute(url+ URLEncoder.encode("subject:\"Adventure\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
+            new BooksAsyncTask(getActivity(),AdventureBooks,adapterAdventure,recAdventure).execute(url+ URLEncoder.encode("subject:\"Adventure\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,null);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -99,7 +99,7 @@ public class GenrePage extends Fragment {
         adapterBiography = new CategoryAdapter(BiographyBooks,getContext());
 
         try {
-            new BooksAsyncTask(getActivity(),BiographyBooks,adapterBiography,recBiography).execute(url+ URLEncoder.encode("subject:\"Biography\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,srl);
+            new BooksAsyncTask(getActivity(),BiographyBooks,adapterBiography,recBiography).execute(url+ URLEncoder.encode("subject:\"Biography\"","UTF-8")+"&maxResults=40&printType=books&orderBy=newest",0,null);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

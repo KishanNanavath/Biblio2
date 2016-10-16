@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
@@ -96,8 +97,14 @@ public class BookFrameFragment extends Fragment implements View.OnClickListener 
         }
 
         setValues();
+//        setNavDrawer();
 
         return view;
+    }
+
+    private void setNavDrawer() {
+        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.ndNavDraw);
+        drawerFragment.setUp(R.id.ndNavDraw, ((MainActivity)getActivity()).drawerLayout, getMyBar);
     }
 
     private void initChilds() {
